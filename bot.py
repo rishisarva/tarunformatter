@@ -11,16 +11,13 @@ async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for line in lines:
         line = line.rstrip()
 
-        # If line contains ":", clean only the LEFT side (label)
         if ":" in line:
             left, right = line.split(":", 1)
             left = left.replace("*", "").strip()
             new_line = f"{left} :{right}"
         else:
-            # No ":" → remove stars safely
             new_line = line.replace("*", "").strip()
 
-        # Add bullet only if line has content
         if new_line:
             formatted_lines.append(f"• {new_line}")
         else:
@@ -30,9 +27,20 @@ async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    token = os.environ.get("8529796522:AAG32rhrYwTK16RNF7Y_1mjLRQ-X_m5486U")
+    token = os.environ.get("BOT_TOKEN")
+
+    # 🔍 DEBUG (VERY IMPORTANT)
+    print("BOT_TOKEN FOUND:", bool(token))
+    if token:
+        print("BOT_TOKEN LENGTH:", len(token))
+    else:
+        print("BOT_TOKEN IS NONE")
+
     if not token:
-        raise RuntimeError("BOT_TOKEN environment variable not set")
+        # Do NOT crash Render
+        print("Bot not started because BOT_TOKEN is missing.")
+        while True:
+            pass  # keep service alive so logs stay visible
 
     app = ApplicationBuilder().token(token).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, format_text))
