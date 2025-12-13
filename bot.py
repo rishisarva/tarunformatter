@@ -1,8 +1,21 @@
 import os
+import threading
+from flask import Flask
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 
+# ------------------ Flask dummy server ------------------
+app_flask = Flask(__name__)
 
+@app_flask.route("/")
+def home():
+    return "Bot is running", 200
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    app_flask.run(host="0.0.0.0", port=port)
+
+# ------------------ Telegram bot ------------------
 async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
     lines = text.split("\n")
@@ -27,26 +40,16 @@ async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    token = os.environ.get("BOT_TOKEN")
+    token = os.environ["BOT_TOKEN"]
 
-    # 🔍 DEBUG (VERY IMPORTANT)
-    print("BOT_TOKEN FOUND:", bool(token))
-    if token:
-        print("BOT_TOKEN LENGTH:", len(token))
-    else:
-        print("BOT_TOKEN IS NONE")
+    # Start Flask server in background
+    threading.Thread(target=run_flask, daemon=True).start()
 
-    if not token:
-        # Do NOT crash Render
-        print("Bot not started because BOT_TOKEN is missing.")
-        while True:
-            pass  # keep service alive so logs stay visible
+    tg_app = ApplicationBuilder().token(token).build()
+    tg_app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, format_text))
 
-    app = ApplicationBuilder().token(token).build()
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, format_text))
-
-    print("Bot started successfully...")
-    app.run_polling()
+    print("Bot started successfully (FREE mode)...")
+    tg_app.run_polling()
 
 
 if __name__ == "__main__":
