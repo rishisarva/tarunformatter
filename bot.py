@@ -10,7 +10,7 @@ from telegram.ext import (
     filters,
 )
 
-# ------------------ Flask dummy server (for Render FREE) ------------------
+# ------------------ Flask dummy server (Render FREE) ------------------
 app_flask = Flask(__name__)
 
 @app_flask.route("/")
@@ -60,19 +60,23 @@ async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("\n".join(output))
 
-
 # ------------------ Main ------------------
 def main():
     token = os.environ.get("BOT_TOKEN")
-
     if not token:
         print("BOT_TOKEN missing")
         return
 
-    # Start Flask server in background (FREE Render requirement)
+    # Start Flask server in background
     threading.Thread(target=run_flask, daemon=True).start()
 
     tg_app = ApplicationBuilder().token(token).build()
 
     tg_app.add_handler(CommandHandler("start", start))
-    tg_app.add_handler(MessageHandler(filter
+    tg_app.add_handler(MessageHandler(filters.TEXT, format_text))
+
+    print("Bot started successfully and listening for messages...")
+    tg_app.run_polling(allowed_updates=Update.ALL_TYPES)
+
+if __name__ == "__main__":
+    main()
