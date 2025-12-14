@@ -33,30 +33,30 @@ async def format_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     output = []
 
     for line in lines:
-        raw = line.strip()
+        raw = line.rstrip()
 
-        if not raw:
+        # Empty line → keep spacing
+        if not raw.strip():
             output.append("")
             continue
 
-        # Remove existing bullets / dots / dashes
-        while raw.startswith(("•", ".", "-", "·")):
-            raw = raw[1:].strip()
+        # 🔥 REMOVE ALL leading bullets, dots, dashes, spaces, tabs
+        cleaned = raw.lstrip(" •.-·\t")
 
-        # Section headers (emoji + name, no colon)
-        if ":" not in raw and "*" in raw:
-            output.append(raw.replace("*", ""))
+        # 🔹 Section headers (emoji + name, no colon)
+        if ":" not in cleaned and "*" in cleaned:
+            output.append(cleaned.replace("*", ""))
             continue
 
-        # Key : Value lines
-        if ":" in raw:
-            left, right = raw.split(":", 1)
+        # 🔹 Key : Value lines
+        if ":" in cleaned:
+            left, right = cleaned.split(":", 1)
             left = left.replace("*", "").strip()
             output.append(f"• {left}: {right.strip()}")
             continue
 
-        # Normal text
-        output.append(raw.replace("*", ""))
+        # 🔹 Normal text (intro / footer)
+        output.append(cleaned.replace("*", ""))
 
     await update.message.reply_text("\n".join(output))
 
@@ -67,7 +67,7 @@ def main():
         print("BOT_TOKEN missing")
         return
 
-    # Start Flask server in background
+    # Start Flask server in background (FREE Render requirement)
     threading.Thread(target=run_flask, daemon=True).start()
 
     tg_app = ApplicationBuilder().token(token).build()
