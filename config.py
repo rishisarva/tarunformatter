@@ -2,7 +2,7 @@
 
 import os
 
-BOT_TOKEN = os.getenv("8199148028:AAE8vambARcqOrIaN9oWgbN2WSgc2uf4l6k")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 # ================= MODE =================
 # TEST  -> uploads images once
