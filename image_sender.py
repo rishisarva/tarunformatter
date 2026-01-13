@@ -18,34 +18,31 @@ async def send_images(bot, chat_id, rows, label):
     album = []
 
     for img in images:
+        # DEBUG LOG
+        print("SENDING IMAGE:", img)
+
         try:
             if MODE == "PROD" and img in cache:
                 album.append(InputMediaPhoto(cache[img]))
             else:
                 album.append(InputMediaPhoto(img))
-        except Exception:
-            continue  # skip broken URL
+        except Exception as e:
+            print("SKIP IMAGE:", img, e)
+            continue
 
         if len(album) == IMAGES_PER_ALBUM:
-            try:
-                msgs = await bot.send_media_group(chat_id, album)
-                if MODE == "TEST":
-                    for m, a in zip(msgs, album):
-                        cache[a.media] = m.photo[-1].file_id
-                    save_cache(cache)
-            except Exception:
-                pass  # skip failed batch
-
-            album = []
-
-    if album:
-        try:
             msgs = await bot.send_media_group(chat_id, album)
             if MODE == "TEST":
                 for m, a in zip(msgs, album):
                     cache[a.media] = m.photo[-1].file_id
                 save_cache(cache)
-        except Exception:
-            pass
+            album = []
+
+    if album:
+        msgs = await bot.send_media_group(chat_id, album)
+        if MODE == "TEST":
+            for m, a in zip(msgs, album):
+                cache[a.media] = m.photo[-1].file_id
+            save_cache(cache)
 
     await bot.send_message(chat_id, f"━━━━ {label.upper()} ENDS HERE ━━━━")
