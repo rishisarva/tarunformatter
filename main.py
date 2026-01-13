@@ -1,6 +1,7 @@
 # main.py
 
 import os
+import json
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -12,8 +13,7 @@ from telegram.ext import (
     filters,
 )
 
-from config import BOT_TOKEN
-from csv_loader import load_csv
+from config import BOT_TOKEN, TELEGRAM_FILE_MAP
 from keyboards import main_menu, list_menu
 from filters import *
 from image_sender import send_images
@@ -21,7 +21,7 @@ from state import *
 
 
 # ===============================
-# 🔧 DUMMY HTTP SERVER (RENDER FIX)
+# RENDER DUMMY SERVER
 # ===============================
 def start_dummy_server():
     port = int(os.environ.get("PORT", 10000))
@@ -30,48 +30,44 @@ def start_dummy_server():
         def do_GET(self):
             self.send_response(200)
             self.end_headers()
-            self.wfile.write(b"Telegram bot is running")
+            self.wfile.write(b"Bot running")
 
-        def log_message(self, format, *args):
+        def log_message(self, *args):
             return
 
     HTTPServer(("0.0.0.0", port), Handler).serve_forever()
 
 
 # ===============================
-# /start COMMAND
+# /start
 # ===============================
 async def start(update: Update, context):
     clear(update.effective_user.id)
     await update.message.reply_text(
-        "Vision Jerseys 👕",
+        "👕 Vision Jerseys",
         reply_markup=main_menu()
     )
 
 
 # ===============================
-# TEXT / BUTTON HANDLER
+# MESSAGE HANDLER
 # ===============================
 async def handler(update: Update, context):
     text = update.message.text.lower()
     uid = update.message.from_user.id
-    rows = load_csv()
 
-    # Back
+    # BACK
     if text == "⬅ back":
         clear(uid)
-        await update.message.reply_text(
-            "Main Menu",
-            reply_markup=main_menu()
-        )
+        await update.message.reply_text("Main Menu", reply_markup=main_menu())
         return
 
-    # 🖼 CLUBS
+    # CLUBS
     if text == "🖼 clubs":
         set(uid, "mode", "club")
         await update.message.reply_text(
             "Select Club",
-            reply_markup=list_menu(clubs(rows))
+            reply_markup=list_menu(clubs())
         )
         return
 
@@ -79,51 +75,66 @@ async def handler(update: Update, context):
         await send_images(
             context.bot,
             update.effective_chat.id,
-            by_club(rows, text),
-            text
+            by_club(text)
         )
         clear(uid)
         return
 
-    # 🖼 PLAYERS
+    # PLAYERS
     if text == "🖼 players":
         set(uid, "mode", "player")
         await update.message.reply_text(
             "Select Player",
-            reply_markup=list_menu(players(rows)))
+            reply_markup=list_menu(players())
+        )
         return
 
     if get(uid, "mode") == "player":
         await send_images(
             context.bot,
             update.effective_chat.id,
-            by_player(rows, text),
-            text
+            by_player(text)
         )
         clear(uid)
         return
 
-    # 🎲 RANDOM
-    if text == "🎲 random 15 jerseys":
+    # SMART
+    if text == "🧠 smart club / player":
+        set(uid, "mode", "smart")
+        await update.message.reply_text("Type club or player name")
+        return
+
+    if get(uid, "mode") == "smart":
+        images = smart(club=text) + smart(player=text)
         await send_images(
             context.bot,
             update.effective_chat.id,
-            rows[:15],
-            "random"
+            images
+        )
+        clear(uid)
+        return
+
+    # RANDOM
+    if text == "🎲 random 15 jerseys":
+        all_imgs = []
+        for imgs in TELEGRAM_FILE_MAP.values():
+            all_imgs.extend(imgs)
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            all_imgs[:15]
         )
         return
 
 
 # ===============================
-# 🚀 ENTRY POINT
+# ENTRY
 # ===============================
 def main():
-    # Start Render dummy server
     threading.Thread(target=start_dummy_server, daemon=True).start()
 
     app = Application.builder().token(BOT_TOKEN).build()
 
-    # Handlers
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
 
