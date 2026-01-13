@@ -80,7 +80,7 @@ async def handler(update: Update, context):
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
-    app.add_handler(MessageHandler(filters.TEXT, handler))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
     app.run_polling()
 
 if __name__ == "__main__":
