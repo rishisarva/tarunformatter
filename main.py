@@ -15,46 +15,77 @@ async def handler(update: Update, context):
     rows = load_csv()
 
     if text == "/start":
-        await update.message.reply_text("Vision Jerseys 👕", reply_markup=main_menu())
+        await update.message.reply_text(
+            "Vision Jerseys 👕",
+            reply_markup=main_menu()
+        )
         return
 
     if text == "⬅ back":
         clear(uid)
-        await update.message.reply_text("Main Menu", reply_markup=main_menu())
+        await update.message.reply_text(
+            "Main Menu",
+            reply_markup=main_menu()
+        )
         return
 
-    # CLUBS
+    # 🖼 CLUBS
     if text == "🖼 clubs":
-        set(uid,"mode","club")
-        await update.message.reply_text("Select Club", reply_markup=list_menu(clubs(rows)))
+        set(uid, "mode", "club")
+        await update.message.reply_text(
+            "Select Club",
+            reply_markup=list_menu(clubs(rows))
+        )
         return
 
-    if get(uid,"mode")=="club":
-        await send_images(context.bot, update.effective_chat.id, by_club(rows,text), text)
+    if get(uid, "mode") == "club":
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            by_club(rows, text),
+            text
+        )
         clear(uid)
         return
 
-    # PLAYERS
+    # 🖼 PLAYERS
     if text == "🖼 players":
-        set(uid,"mode","player")
-        await update.message.reply_text("Select Player", reply_markup=list_menu(players(rows)))
+        set(uid, "mode", "player")
+        await update.message.reply_text(
+            "Select Player",
+            reply_markup=list_menu(players(rows))
+        )
         return
 
-    if get(uid,"mode")=="player":
-        await send_images(context.bot, update.effective_chat.id, by_player(rows,text), text)
+    if get(uid, "mode") == "player":
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            by_player(rows, text),
+            text
+        )
         clear(uid)
         return
 
-    # RANDOM
+    # 🎲 RANDOM
     if text == "🎲 random 15 jerseys":
-        await send_images(context.bot, update.effective_chat.id, rows[:15], "random")
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            rows[:15],
+            "random"
+        )
         return
 
-async def main():
+
+def main():
     app = Application.builder().token(BOT_TOKEN).build()
-    app.add_handler(MessageHandler(filters.TEXT, handler))
-    await app.run_polling()
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
+    app.run_polling(
+        allowed_updates=Update.ALL_TYPES,
+        close_loop=False   # 🔥 THIS IS THE KEY
+    )
+
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    main()
