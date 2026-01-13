@@ -19,8 +19,15 @@ def load_csv():
     rows = []
 
     for row in reader:
-        row = {k: (v or "").lower() for k, v in row.items()}
-        rows.append(row)
+        clean = {}
+        for k, v in row.items():
+            if not v:
+                clean[k] = ""
+            elif k == "image":          # 🚨 CRITICAL
+                clean[k] = v.strip()    # keep ORIGINAL URL
+            else:
+                clean[k] = v.lower()    # safe for text
+        rows.append(clean)
 
     _rows = rows
     _last = time.time()
