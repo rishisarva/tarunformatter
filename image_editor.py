@@ -1,52 +1,46 @@
 from PIL import Image, ImageDraw, ImageFont
-import requests
-from io import BytesIO
+import io, requests
 
-FONT_SIZE_TITLE = 36
-FONT_SIZE_META = 30
-BOX_HEIGHT = 160
-BOX_OPACITY = 170  # 0–255
 
-def render_image(url, title, price, technique):
-    r = requests.get(url, timeout=30)
-    r.raise_for_status()
+def draw_info(image_url, title, price, technique):
+    res = requests.get(image_url, timeout=20)
+    img = Image.open(io.BytesIO(res.content)).convert("RGB")
 
-    img = Image.open(BytesIO(r.content)).convert("RGBA")
     w, h = img.size
+    draw = ImageDraw.Draw(img)
 
-    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(overlay)
-
-    box_w = int(w * 0.75)
-    x1 = (w - box_w) // 2
-    y1 = h - BOX_HEIGHT - 25
-    x2 = x1 + box_w
-    y2 = y1 + BOX_HEIGHT
+    BOX_W, BOX_H = 520, 160
+    x1 = (w - BOX_W) // 2
+    y1 = h - BOX_H - 30
+    x2 = x1 + BOX_W
+    y2 = y1 + BOX_H
 
     draw.rounded_rectangle(
-        [x1, y1, x2, y2],
-        radius=25,
-        fill=(0, 0, 0, BOX_OPACITY)
+        (x1, y1, x2, y2),
+        radius=22,
+        fill=(0, 0, 0, 170)
     )
 
     try:
-        font_bold = ImageFont.truetype("DejaVuSans-Bold.ttf", FONT_SIZE_TITLE)
-        font = ImageFont.truetype("DejaVuSans.ttf", FONT_SIZE_META)
+        title_font = ImageFont.truetype("DejaVuSans-Bold.ttf", 38)
+        text_font = ImageFont.truetype("DejaVuSans.ttf", 32)
     except:
-        font_bold = font = ImageFont.load_default()
+        title_font = text_font = ImageFont.load_default()
 
-    cx = w // 2
-    ty = y1 + 20
+    lines = [
+        title,
+        f"₹{price}",
+        f"Technique: {technique}"
+    ]
 
-    draw.text((cx, ty), title, font=font_bold, fill="white", anchor="mm")
-    draw.text((cx, ty + 45), f"Price - ₹{price}", font=font, fill="white", anchor="mm")
-    draw.text(
-        (cx, ty + 85),
-        f"Technique - {technique or 'Standard'}",
-        font=font,
-        fill="white",
-        anchor="mm"
-    )
+    y = y1 + 22
+    for i, txt in enumerate(lines):
+        font = title_font if i == 0 else text_font
+        tw = draw.textlength(txt, font=font)
+        draw.text(((w - tw) // 2, y), txt, fill="white", font=font)
+        y += 44
 
-    final = Image.alpha_composite(img, overlay).convert("RGB")
-    return final
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG", quality=90)
+    buf.seek(0)
+    return buf
