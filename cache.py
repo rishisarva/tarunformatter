@@ -1,6 +1,0 @@
-# config.py
-
-BOT_TOKEN = "YOUR_BOT_TOKEN"
-
-IMAGE_LIMIT = 10
-AUTO_DELETE_SECONDS = 180  # 3 minutes
