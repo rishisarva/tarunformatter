@@ -1,12 +1,20 @@
 # cache.py
 
-import json, os
-from config import FILE_ID_CACHE
+import time, requests, json
 
-def load_cache():
-    if not os.path.exists(FILE_ID_CACHE):
-        return {}
-    return json.load(open(FILE_ID_CACHE))
+_file_ids = {}
+_last = 0
+TTL = 300  # 5 min
 
-def save_cache(data):
-    json.dump(data, open(FILE_ID_CACHE,"w"))
+def get_file_ids(url):
+    global _file_ids, _last
+
+    if time.time() - _last < TTL:
+        return _file_ids
+
+    r = requests.get(url, timeout=20)
+    r.raise_for_status()
+
+    _file_ids = r.json()
+    _last = time.time()
+    return _file_ids
