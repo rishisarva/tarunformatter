@@ -1,27 +1,26 @@
 # image_sender.py
 
-from telegram import InputMediaPhoto
-from cache import get_file_ids
-from config import FILE_ID_MAP_URL, MAX_IMAGES_PER_REQUEST
-import random
+import json, random
+from config import FILE_ID_MAP_PATH, IMAGE_COUNT
 
-async def send_images(bot, chat_id, club_key):
-    file_map = get_file_ids(FILE_ID_MAP_URL)
+# load once at startup
+with open(FILE_ID_MAP_PATH, "r") as f:
+    FILE_MAP = json.load(f)
 
-    images = file_map.get(club_key.lower(), [])
+
+def get_images_by_club(club_slug):
+    return FILE_MAP.get(club_slug, [])
+
+
+def send_images(bot, chat_id, images):
+    """
+    images = list of {name, file_id}
+    """
     if not images:
-        await bot.send_message(chat_id, "❌ No images found.")
+        bot.send_message(chat_id, "❌ No jerseys found")
         return
 
-    # 🎯 pick non-repeating 10
-    selected = random.sample(
-        images,
-        min(MAX_IMAGES_PER_REQUEST, len(images))
-    )
+    selected = random.sample(images, min(IMAGE_COUNT, len(images)))
 
-    media = [
-        InputMediaPhoto(media=img["file_id"])
-        for img in selected
-    ]
-
-    await bot.send_media_group(chat_id=chat_id, media=media)
+    for img in selected:
+        bot.send_photo(chat_id, photo=img["file_id"])
