@@ -4,12 +4,12 @@ import random
 from config import TELEGRAM_FILE_MAP, MAX_IMAGES_PER_REQUEST
 
 
-def send_images(bot, chat_id, images):
+async def send_images(bot, chat_id, images):
     """
     images = list of {name, file_id}
     """
     if not images:
-        await_or_send(bot, chat_id, "❌ No jerseys found")
+        await bot.send_message(chat_id, "❌ No jerseys found")
         return
 
     selected = random.sample(
@@ -18,17 +18,7 @@ def send_images(bot, chat_id, images):
     )
 
     for img in selected:
-        bot.send_photo(
+        await bot.send_photo(
             chat_id=chat_id,
             photo=img["file_id"]
         )
-
-
-def await_or_send(bot, chat_id, text):
-    """
-    Safe sync send helper (python-telegram-bot v21+)
-    """
-    try:
-        bot.send_message(chat_id=chat_id, text=text)
-    except Exception:
-        pass
