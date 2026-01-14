@@ -72,15 +72,24 @@ async def handler(update: Update, context):
         )
         return
 
-    if get(uid, "mode") == "club":
-        await send_images(
-            context.bot,
-            update.effective_chat.id,
-            by_club(text)
+   if get(uid, "mode") == "club":
+    images = by_club(text)
+
+    if not images:
+        await update.message.reply_text(
+            "❌ No jerseys found for this club.\nTry another.",
+            reply_markup=list_menu(clubs())
         )
-        clear(uid)
         return
 
+    await send_images(
+        context.bot,
+        update.effective_chat.id,
+        images
+    )
+
+    clear(uid)
+    return
     # PLAYERS
     if text == "🖼 players":
         set(uid, "mode", "player")
