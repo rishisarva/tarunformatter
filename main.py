@@ -1,3 +1,5 @@
+# main.py
+
 import os
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -12,9 +14,9 @@ from telegram.ext import (
 
 from config import BOT_TOKEN, TELEGRAM_FILE_MAP
 from keyboards import main_menu, list_menu
-from filters import *
+from filters import clubs, players, by_club, by_player, smart
 from image_sender import send_images
-from state import *
+from state import set, get, clear
 
 print("Loaded clubs:", len(TELEGRAM_FILE_MAP))
 
@@ -122,8 +124,9 @@ async def handler(update: Update, context):
         await send_images(
             context.bot,
             update.effective_chat.id,
-            all_imgs[:15]
+            all_imgs
         )
+        return
 
 
 # ===============================
@@ -137,7 +140,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
 
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
