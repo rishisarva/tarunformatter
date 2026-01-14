@@ -1,12 +1,11 @@
+# main.py
 import os
-import threading
-from http.server import BaseHTTPRequestHandler, HTTPServer
-
 from telegram import Update
 from telegram.ext import (
     Application,
     CommandHandler,
     MessageHandler,
+    ContextTypes,
     filters,
 )
 
@@ -16,31 +15,14 @@ from filters import *
 from image_sender import send_images
 from state import *
 
-print("Loaded clubs:", len(TELEGRAM_FILE_MAP))
-
-
-# ===============================
-# RENDER DUMMY SERVER
-# ===============================
-def start_dummy_server():
-    port = int(os.environ.get("PORT", 10000))
-
-    class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(b"Bot running")
-
-        def log_message(self, *args):
-            return
-
-    HTTPServer(("0.0.0.0", port), Handler).serve_forever()
+PORT = int(os.environ.get("PORT", 10000))
+WEBHOOK_URL = f"https://{os.environ.get('RENDER_EXTERNAL_HOSTNAME')}/webhook"
 
 
 # ===============================
 # /start
 # ===============================
-async def start(update: Update, context):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clear(update.effective_user.id)
     await update.message.reply_text(
         "👕 Vision Jerseys",
@@ -51,10 +33,9 @@ async def start(update: Update, context):
 # ===============================
 # MESSAGE HANDLER
 # ===============================
-async def handler(update: Update, context):
-    text = update.message.text.lower().strip()
+async def handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.lower()
     uid = update.effective_user.id
-    chat_id = update.effective_chat.id
 
     # BACK
     if text == "⬅ back":
@@ -62,51 +43,35 @@ async def handler(update: Update, context):
         await update.message.reply_text("Main Menu", reply_markup=main_menu())
         return
 
-    # MENU BUTTONS
+    # CLUBS
     if text == "🖼 clubs":
         set(uid, "mode", "club")
-        await update.message.reply_text(
-            "Select Club",
-            reply_markup=list_menu(clubs())
-        )
+        await update.message.reply_text("Select Club", reply_markup=list_menu(clubs()))
         return
 
+    if get(uid, "mode") == "club":
+        await send_images(context.bot, update.effective_chat.id, by_club(text))
+        return  # ❗ DO NOT clear mode → allows repeat
+
+    # PLAYERS
     if text == "🖼 players":
         set(uid, "mode", "player")
-        await update.message.reply_text(
-            "Select Player",
-            reply_markup=list_menu(players())
-        )
+        await update.message.reply_text("Select Player", reply_markup=list_menu(players()))
         return
 
+    if get(uid, "mode") == "player":
+        await send_images(context.bot, update.effective_chat.id, by_player(text))
+        return
+
+    # SMART
     if text == "🧠 smart club / player":
         set(uid, "mode", "smart")
         await update.message.reply_text("Type club or player name")
         return
 
-    # 🔥 DIRECT CLUB MATCH (REPEATABLE)
-    if text in TELEGRAM_FILE_MAP:
-        await send_images(
-            context.bot,
-            chat_id,
-            TELEGRAM_FILE_MAP[text]
-        )
-        return
-
-    # MODE HANDLING
-    mode = get(uid, "mode")
-
-    if mode == "club":
-        await send_images(context.bot, chat_id, by_club(text))
-        return
-
-    if mode == "player":
-        await send_images(context.bot, chat_id, by_player(text))
-        return
-
-    if mode == "smart":
+    if get(uid, "mode") == "smart":
         images = smart(club=text) + smart(player=text)
-        await send_images(context.bot, chat_id, images)
+        await send_images(context.bot, update.effective_chat.id, images)
         return
 
     # RANDOM
@@ -115,28 +80,25 @@ async def handler(update: Update, context):
         for imgs in TELEGRAM_FILE_MAP.values():
             all_imgs.extend(imgs)
 
-        await send_images(context.bot, chat_id, all_imgs[:15])
+        await send_images(context.bot, update.effective_chat.id, all_imgs[:15])
         return
 
-    # FALLBACK
-    await update.message.reply_text(
-        "❓ Please use menu buttons",
-        reply_markup=main_menu()
-    )
-
 
 # ===============================
-# ENTRY
+# WEBHOOK ENTRY
 # ===============================
 def main():
-    threading.Thread(target=start_dummy_server, daemon=True).start()
-
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
 
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        webhook_url=WEBHOOK_URL,
+        url_path="webhook",
+    )
 
 
 if __name__ == "__main__":
