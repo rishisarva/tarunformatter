@@ -1,8 +1,6 @@
-# image_sender.py
 import random
 from telegram import InputMediaPhoto
-
-MAX_IMAGES = 10
+from config import MAX_IMAGES
 
 async def send_images(bot, chat_id, images):
     if not images:
@@ -12,11 +10,8 @@ async def send_images(bot, chat_id, images):
     selected = random.sample(images, min(MAX_IMAGES, len(images)))
 
     media = [
-        InputMediaPhoto(media=img["file_id"])
-        for img in selected
+        InputMediaPhoto(photo=i["file_id"])
+        for i in selected
     ]
 
-    await bot.send_media_group(
-        chat_id=chat_id,
-        media=media
-    )
+    await bot.send_media_group(chat_id=chat_id, media=media)
