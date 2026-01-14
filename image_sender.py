@@ -1,4 +1,3 @@
-# image_sender.py
 import random
 from config import MAX_IMAGES_PER_REQUEST
 
