@@ -4,7 +4,7 @@ import requests
 # ======================
 # BOT CONFIG
 # ======================
-BOT_TOKEN = "YOUR_BOT_TOKEN"
+BOT_TOKEN = "8199148028:AAE8vambARcqOrIaN9oWgbN2WSgc2uf4l6k"
 
 # ======================
 # TELEGRAM FILE IDS
