@@ -52,8 +52,9 @@ async def start(update: Update, context):
 # MESSAGE HANDLER
 # ===============================
 async def handler(update: Update, context):
-    text = update.message.text.lower()
-    uid = update.message.from_user.id
+    text = update.message.text.lower().strip()
+    uid = update.effective_user.id
+    chat_id = update.effective_chat.id
 
     # BACK
     if text == "⬅ back":
@@ -61,7 +62,7 @@ async def handler(update: Update, context):
         await update.message.reply_text("Main Menu", reply_markup=main_menu())
         return
 
-    # CLUBS
+    # MENU BUTTONS
     if text == "🖼 clubs":
         set(uid, "mode", "club")
         await update.message.reply_text(
@@ -70,16 +71,6 @@ async def handler(update: Update, context):
         )
         return
 
-    if get(uid, "mode") == "club":
-        await send_images(
-            context.bot,
-            update.effective_chat.id,
-            by_club(text)
-        )
-        clear(uid)
-        return
-
-    # PLAYERS
     if text == "🖼 players":
         set(uid, "mode", "player")
         await update.message.reply_text(
@@ -88,29 +79,34 @@ async def handler(update: Update, context):
         )
         return
 
-    if get(uid, "mode") == "player":
-        await send_images(
-            context.bot,
-            update.effective_chat.id,
-            by_player(text)
-        )
-        clear(uid)
-        return
-
-    # SMART
     if text == "🧠 smart club / player":
         set(uid, "mode", "smart")
         await update.message.reply_text("Type club or player name")
         return
 
-    if get(uid, "mode") == "smart":
-        images = smart(club=text) + smart(player=text)
+    # 🔥 DIRECT CLUB MATCH (REPEATABLE)
+    if text in TELEGRAM_FILE_MAP:
         await send_images(
             context.bot,
-            update.effective_chat.id,
-            images
+            chat_id,
+            TELEGRAM_FILE_MAP[text]
         )
-        clear(uid)
+        return
+
+    # MODE HANDLING
+    mode = get(uid, "mode")
+
+    if mode == "club":
+        await send_images(context.bot, chat_id, by_club(text))
+        return
+
+    if mode == "player":
+        await send_images(context.bot, chat_id, by_player(text))
+        return
+
+    if mode == "smart":
+        images = smart(club=text) + smart(player=text)
+        await send_images(context.bot, chat_id, images)
         return
 
     # RANDOM
@@ -119,11 +115,14 @@ async def handler(update: Update, context):
         for imgs in TELEGRAM_FILE_MAP.values():
             all_imgs.extend(imgs)
 
-        await send_images(
-            context.bot,
-            update.effective_chat.id,
-            all_imgs[:15]
-        )
+        await send_images(context.bot, chat_id, all_imgs[:15])
+        return
+
+    # FALLBACK
+    await update.message.reply_text(
+        "❓ Please use menu buttons",
+        reply_markup=main_menu()
+    )
 
 
 # ===============================
