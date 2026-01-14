@@ -1,8 +1,7 @@
 # image_sender.py
 import random
-import asyncio
+from telegram import InputMediaPhoto
 
-IMAGE_DELAY = 0.6  # prevents Telegram flood block
 MAX_IMAGES = 10
 
 
@@ -11,11 +10,16 @@ async def send_images(bot, chat_id, images):
         await bot.send_message(chat_id, "❌ No jerseys found")
         return
 
+    # pick random images (max 10)
     selected = random.sample(images, min(MAX_IMAGES, len(images)))
 
-    for img in selected:
-        await bot.send_photo(
-            chat_id=chat_id,
-            photo=img["file_id"]
-        )
-        await asyncio.sleep(IMAGE_DELAY)
+    media_group = [
+        InputMediaPhoto(media=img["file_id"])
+        for img in selected
+    ]
+
+    # 🔥 SEND AS ONE GROUP
+    await bot.send_media_group(
+        chat_id=chat_id,
+        media=media_group
+    )
