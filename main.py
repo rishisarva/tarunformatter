@@ -1,5 +1,3 @@
-# main.py
-
 import os
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -14,9 +12,9 @@ from telegram.ext import (
 
 from config import BOT_TOKEN, TELEGRAM_FILE_MAP
 from keyboards import main_menu, list_menu
-from filters import clubs, players, by_club, by_player, smart
+from filters import *
 from image_sender import send_images
-from state import set, get, clear
+from state import *
 
 print("Loaded clubs:", len(TELEGRAM_FILE_MAP))
 
@@ -72,24 +70,15 @@ async def handler(update: Update, context):
         )
         return
 
-   if get(uid, "mode") == "club":
-    images = by_club(text)
-
-    if not images:
-        await update.message.reply_text(
-            "❌ No jerseys found for this club.\nTry another.",
-            reply_markup=list_menu(clubs())
+    if get(uid, "mode") == "club":
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            by_club(text)
         )
+        clear(uid)
         return
 
-    await send_images(
-        context.bot,
-        update.effective_chat.id,
-        images
-    )
-
-    clear(uid)
-    return
     # PLAYERS
     if text == "🖼 players":
         set(uid, "mode", "player")
@@ -133,9 +122,8 @@ async def handler(update: Update, context):
         await send_images(
             context.bot,
             update.effective_chat.id,
-            all_imgs
+            all_imgs[:15]
         )
-        return
 
 
 # ===============================
@@ -149,7 +137,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
 
-    app.run_polling(drop_pending_updates=True)
+    app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":
