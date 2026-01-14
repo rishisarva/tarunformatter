@@ -18,6 +18,8 @@ from keyboards import main_menu, list_menu
 from filters import *
 from image_sender import send_images
 from state import *
+from config import TELEGRAM_FILE_MAP
+print("Loaded clubs:", len(TELEGRAM_FILE_MAP))
 
 
 # ===============================
