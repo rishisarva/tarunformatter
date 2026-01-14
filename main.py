@@ -1,5 +1,3 @@
-# main.py
-
 import os
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -56,7 +54,6 @@ async def start(update: Update, context):
 async def handler(update: Update, context):
     text = update.message.text.lower()
     uid = update.message.from_user.id
-    chat_id = update.effective_chat.id
 
     # BACK
     if text == "⬅ back":
@@ -74,14 +71,12 @@ async def handler(update: Update, context):
         return
 
     if get(uid, "mode") == "club":
-        images = by_club(text)
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            by_club(text)
+        )
         clear(uid)
-
-        if not images:
-            await update.message.reply_text("❌ No jerseys found for this club")
-            return
-
-        await send_images(context.bot, chat_id, images)
         return
 
     # PLAYERS
@@ -94,14 +89,12 @@ async def handler(update: Update, context):
         return
 
     if get(uid, "mode") == "player":
-        images = by_player(text)
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            by_player(text)
+        )
         clear(uid)
-
-        if not images:
-            await update.message.reply_text("❌ No jerseys found for this player")
-            return
-
-        await send_images(context.bot, chat_id, images)
         return
 
     # SMART
@@ -111,24 +104,13 @@ async def handler(update: Update, context):
         return
 
     if get(uid, "mode") == "smart":
+        images = smart(club=text) + smart(player=text)
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            images
+        )
         clear(uid)
-
-        combined = smart(club=text) + smart(player=text)
-
-        # 🔥 remove duplicates by file_id
-        seen = set()
-        images = []
-        for img in combined:
-            fid = img.get("file_id")
-            if fid and fid not in seen:
-                seen.add(fid)
-                images.append(img)
-
-        if not images:
-            await update.message.reply_text("❌ No matching jerseys found")
-            return
-
-        await send_images(context.bot, chat_id, images)
         return
 
     # RANDOM
@@ -137,12 +119,11 @@ async def handler(update: Update, context):
         for imgs in TELEGRAM_FILE_MAP.values():
             all_imgs.extend(imgs)
 
-        if not all_imgs:
-            await update.message.reply_text("❌ No jerseys available")
-            return
-
-        await send_images(context.bot, chat_id, all_imgs)
-        return
+        await send_images(
+            context.bot,
+            update.effective_chat.id,
+            all_imgs[:15]
+        )
 
 
 # ===============================
@@ -156,7 +137,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handler))
 
-    app.run_polling()
+    app.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":
