@@ -1,7 +1,6 @@
 # image_sender.py
-
 import random
-from config import TELEGRAM_FILE_MAP, MAX_IMAGES_PER_REQUEST
+from config import MAX_IMAGES_PER_REQUEST
 
 async def send_images(bot, chat_id, images):
     """
@@ -11,8 +10,10 @@ async def send_images(bot, chat_id, images):
         await bot.send_message(chat_id, "❌ No jerseys found")
         return
 
-    count = min(MAX_IMAGES_PER_REQUEST, len(images))
-    selected = random.sample(images, count)
+    selected = random.sample(
+        images,
+        min(MAX_IMAGES_PER_REQUEST, len(images))
+    )
 
     for img in selected:
         await bot.send_photo(
