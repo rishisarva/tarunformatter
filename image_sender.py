@@ -1,15 +1,7 @@
 # image_sender.py
 
-import json, random
-from config import FILE_ID_MAP_PATH, IMAGE_COUNT
-
-# load once at startup
-with open(FILE_ID_MAP_PATH, "r") as f:
-    FILE_MAP = json.load(f)
-
-
-def get_images_by_club(club_slug):
-    return FILE_MAP.get(club_slug, [])
+import random
+from config import TELEGRAM_FILE_MAP, MAX_IMAGES_PER_REQUEST
 
 
 def send_images(bot, chat_id, images):
@@ -17,10 +9,26 @@ def send_images(bot, chat_id, images):
     images = list of {name, file_id}
     """
     if not images:
-        bot.send_message(chat_id, "❌ No jerseys found")
+        await_or_send(bot, chat_id, "❌ No jerseys found")
         return
 
-    selected = random.sample(images, min(IMAGE_COUNT, len(images)))
+    selected = random.sample(
+        images,
+        min(MAX_IMAGES_PER_REQUEST, len(images))
+    )
 
     for img in selected:
-        bot.send_photo(chat_id, photo=img["file_id"])
+        bot.send_photo(
+            chat_id=chat_id,
+            photo=img["file_id"]
+        )
+
+
+def await_or_send(bot, chat_id, text):
+    """
+    Safe sync send helper (python-telegram-bot v21+)
+    """
+    try:
+        bot.send_message(chat_id=chat_id, text=text)
+    except Exception:
+        pass
