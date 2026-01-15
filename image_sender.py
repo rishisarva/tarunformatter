@@ -1,34 +1,27 @@
 import random
 import asyncio
+from csv_loader import find_from_csv
 
 IMAGE_DELAY = 0.6
 MAX_IMAGES = 9
 
-import re
-
-def prettify_name(raw):
-    # remove extension
-    name = raw.rsplit(".", 1)[0]
-
-    # replace __ and _
-    name = name.replace("__", " ").replace("_", " ")
-
-    # fix seasons like 2008 09 → 2008-09
-    name = re.sub(r"(\d{4}) (\d{2})", r"\1-\2", name)
-
-    # clean extra spaces
-    name = re.sub(r"\s+", " ", name).strip()
-
-    return name.title()
-
+def humanize_filename(name: str):
+    name = name.replace(".jpg", "").replace(".png", "")
+    name = name.replace("__", " ")
+    name = name.replace("_", " ")
+    return name.strip()
 
 def build_caption(item):
-    if "title" in item and item["title"]:
-        title = item["title"]
-    else:
-        title = prettify_name(item.get("name", "Premium Jersey"))
+    filename = item.get("name", "").lower()
 
-    link = item.get("link", "https://visionsjersey.com")
+    csv_row = find_from_csv(filename)
+
+    if csv_row:
+        title = csv_row["title"]
+        link = csv_row["link"]
+    else:
+        title = humanize_filename(filename)
+        link = "https://visionsjersey.com"
 
     return (
         f"👕 {title}\n\n"
