@@ -1,78 +1,74 @@
-import os
+from telegram.ext import *
 from telegram import Update
-from telegram.ext import (
-    Application,
-    CommandHandler,
-    CallbackQueryHandler,
-    ContextTypes,
-)
-
 from config import BOT_TOKEN
-from keyboards import main_menu, list_buttons
+from keyboards import *
 from filters import *
 from image_sender import send_images
 from state import *
 
-PORT = int(os.environ.get("PORT", 10000))
-WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
-
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def start(update: Update, context):
     clear(update.effective_user.id)
     await update.message.reply_text("👕 Vision Jerseys", reply_markup=main_menu())
 
-
-async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def buttons(update: Update, context):
     q = update.callback_query
     await q.answer()
     uid = q.from_user.id
-
     data = q.data
 
-    if data == "menu:back":
+    if data == "clubs":
+        await q.message.reply_text("Select Club", reply_markup=list_menu(clubs(), "club"))
+
+    elif data.startswith("club:"):
         clear(uid)
-        await q.message.edit_text("👕 Vision Jerseys", reply_markup=main_menu())
-        return
+        await send_images(context.bot, q.message.chat_id, by_club(data.split(":")[1]))
 
-    if data == "menu:clubs":
-        await q.message.edit_text("Select Club", reply_markup=list_buttons(clubs(), "club"))
-        return
+    elif data == "players":
+        await q.message.reply_text("Select Player", reply_markup=list_menu(players(), "player"))
 
-    if data.startswith("club:"):
-        club = data.split(":", 1)[1]
-        await send_images(context.bot, q.message.chat_id, by_club(club))
-        return
+    elif data.startswith("player:"):
+        clear(uid)
+        await send_images(context.bot, q.message.chat_id, by_player(data.split(":")[1]))
 
-    if data == "menu:players":
-        await q.message.edit_text("Select Player", reply_markup=list_buttons(players(), "player"))
-        return
+    elif data == "categories":
+        await q.message.reply_text("Select Sleeve Type", reply_markup=category_menu())
 
-    if data.startswith("player:"):
-        p = data.split(":", 1)[1]
-        await send_images(context.bot, q.message.chat_id, by_player(p))
-        return
+    elif data.startswith("cat:"):
+        await send_images(context.bot, q.message.chat_id, by_category(data.split(":")[1]))
 
-    if data == "menu:random":
-        all_imgs = []
-        for v in TELEGRAM_FILE_MAP.values():
-            all_imgs.extend(v)
-        await send_images(context.bot, q.message.chat_id, all_imgs)
-        return
+    elif data == "randtech":
+        await q.message.reply_text("Select Technique", reply_markup=tech_menu())
 
+    elif data.startswith("tech:"):
+        await send_images(context.bot, q.message.chat_id, by_technique(data.split(":")[1]))
+
+    elif data == "random":
+        await send_images(context.bot, q.message.chat_id, all_rows(), 15)
+
+    elif data == "wa9":
+        rows = all_rows()[:9]
+        for r in rows:
+            caption = f"""👕 {r.get('title','Jersey')}
+
+📏 Sizes Available:
+S • M • L • XL • XXL
+
+🔗 Product Link:
+{r.get('product_link','https://visionsjersey.com')}
+
+✨ Order now – limited stock!
+"""
+            await context.bot.send_photo(
+                chat_id=q.message.chat_id,
+                photo=r["file_id"],
+                caption=caption
+            )
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
-
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CallbackQueryHandler(on_callback))
-
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path="webhook",
-        webhook_url=WEBHOOK_URL
-    )
-
+    app.add_handler(CallbackQueryHandler(buttons))
+    app.run_polling(drop_pending_updates=True)
 
 if __name__ == "__main__":
     main()
