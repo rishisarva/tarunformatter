@@ -1,21 +1,30 @@
 from config import TELEGRAM_FILE_MAP
+from state import *
+
+def all_rows():
+    rows = []
+    for items in TELEGRAM_FILE_MAP.values():
+        rows.extend(items)
+    return rows
 
 def clubs():
-    return sorted(TELEGRAM_FILE_MAP.keys())
+    return sorted(set(r["club"] for r in all_rows() if "club" in r))
 
 def players():
-    players = set()
-    for imgs in TELEGRAM_FILE_MAP.values():
-        for i in imgs:
-            name = i["name"].lower()
-            players.add(name.split("__")[1] if "__" in name else name)
-    return sorted(players)
+    return sorted(set(r["player"] for r in all_rows() if "player" in r))
 
-def by_club(club):
-    return TELEGRAM_FILE_MAP.get(club, [])
+def by_club(name):
+    return [r for r in all_rows() if r.get("club","").lower() == name.lower()]
 
-def by_player(player):
-    out = []
-    for imgs in TELEGRAM_FILE_MAP.values():
-        out += [i for i in imgs if player in i["name"].lower()]
-    return out
+def by_player(name):
+    return [r for r in all_rows() if name.lower() in r.get("title","").lower()]
+
+def by_category(category):
+    return [r for r in all_rows() if category in r.get("title","").lower()]
+
+def by_technique(tech):
+    return [
+        r for r in all_rows()
+        if tech in r.get("title","").lower()
+        or tech in r.get("techniques","").lower()
+    ]
