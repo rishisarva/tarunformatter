@@ -17,11 +17,10 @@ def load_csv():
     reader = csv.DictReader(res.text.splitlines())
     for r in reader:
         rows.append({
-            "title": r.get("title", "").strip(),
-            "link": r.get("product_url", "").strip(),
-            "image": r.get("image", "").lower()
-        })
-
+    "title": r.get("title", "").strip(),
+    "link": r.get("link", "").strip(),   # ✅ FIX HERE
+    "image": r.get("image", "").lower()
+})
     _csv_cache = rows
     return rows
 
