@@ -1,42 +1,24 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import ReplyKeyboardMarkup
 
 def main_menu():
-    return InlineKeyboardMarkup([
+    return ReplyKeyboardMarkup(
         [
-            InlineKeyboardButton("🖼 Clubs", callback_data="menu:clubs"),
-            InlineKeyboardButton("🖼 Players", callback_data="menu:players")
+            ["🖼 Clubs", "🖼 Players"],
+            ["🖼 Mix", "🖼 Categories"],
+            ["🎯 Random Technique"],
+            ["📲 WhatsApp Random 9"],
+            ["🎲 Random Jerseys"]
         ],
-        [
-            InlineKeyboardButton("🖼 Mix", callback_data="menu:mix")
-        ],
-        [
-            InlineKeyboardButton("🖼 Categories", callback_data="menu:categories"),
-            InlineKeyboardButton("🎯 Random Technique", callback_data="menu:technique")
-        ],
-        [
-            InlineKeyboardButton("📲 WhatsApp Random 9", callback_data="menu:wa9")
-        ],
-        [
-            InlineKeyboardButton("🎲 Random Jerseys", callback_data="menu:random")
-        ]
-    ])
+        resize_keyboard=True
+    )
 
-def back_btn():
-    return InlineKeyboardMarkup([
-        [InlineKeyboardButton("⬅ Back", callback_data="menu:back")]
-    ])
-
-def list_buttons(items, prefix):
+def list_keyboard(items):
     rows = []
     for i in range(0, len(items), 2):
-        row = [
-            InlineKeyboardButton(items[i].title(), callback_data=f"{prefix}:{items[i]}")
-        ]
+        row = [items[i].title()]
         if i + 1 < len(items):
-            row.append(
-                InlineKeyboardButton(items[i+1].title(), callback_data=f"{prefix}:{items[i+1]}")
-            )
+            row.append(items[i+1].title())
         rows.append(row)
 
-    rows.append([InlineKeyboardButton("⬅ Back", callback_data="menu:back")])
-    return InlineKeyboardMarkup(rows)
+    rows.append(["⬅ Back"])
+    return ReplyKeyboardMarkup(rows, resize_keyboard=True)
