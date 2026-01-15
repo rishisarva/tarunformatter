@@ -1,30 +1,27 @@
 from config import TELEGRAM_FILE_MAP
-from state import *
-
-def all_rows():
-    rows = []
-    for items in TELEGRAM_FILE_MAP.values():
-        rows.extend(items)
-    return rows
 
 def clubs():
-    return sorted(set(r["club"] for r in all_rows() if "club" in r))
-
-def players():
-    return sorted(set(r["player"] for r in all_rows() if "player" in r))
+    return list(TELEGRAM_FILE_MAP.keys())
 
 def by_club(name):
-    return [r for r in all_rows() if r.get("club","").lower() == name.lower()]
+    return TELEGRAM_FILE_MAP.get(name, [])
 
-def by_player(name):
-    return [r for r in all_rows() if name.lower() in r.get("title","").lower()]
+def categories():
+    return ["short sleeve", "full sleeve", "polo", "five sleeve"]
 
-def by_category(category):
-    return [r for r in all_rows() if category in r.get("title","").lower()]
+def by_category(cat):
+    out = []
+    for imgs in TELEGRAM_FILE_MAP.values():
+        for img in imgs:
+            if cat.replace(" ", "_") in img["name"]:
+                out.append(img)
+    return out
 
-def by_technique(tech):
-    return [
-        r for r in all_rows()
-        if tech in r.get("title","").lower()
-        or tech in r.get("techniques","").lower()
-    ]
+def smart_search(query):
+    q = query.lower().replace(" ", "_")
+    out = []
+    for imgs in TELEGRAM_FILE_MAP.values():
+        for img in imgs:
+            if q in img["name"]:
+                out.append(img)
+    return out
