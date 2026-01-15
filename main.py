@@ -45,23 +45,34 @@ async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     # -------- MIX --------
-    if data == "menu:mix":
-        context.user_data["mix"] = {}
-        await q.message.edit_text("Select Player", reply_markup=list_buttons(players(), "mixp"))
+if data == "menu:mix":
+    context.user_data["mix"] = {}
+    await q.message.edit_text("Select Player", reply_markup=list_buttons(players(), "mixp"))
+    return
+
+if data.startswith("mixp:"):
+    context.user_data.setdefault("mix", {})
+    context.user_data["mix"]["player"] = data.split(":",1)[1]
+    await q.message.edit_text("Select Club", reply_markup=list_buttons(clubs(), "mixc"))
+    return
+
+if data.startswith("mixc:"):
+    mix = context.user_data.get("mix")
+    if not mix:
+        await q.message.reply_text("⚠️ Please start mix again")
         return
 
-    if data.startswith("mixp:"):
-        context.user_data["mix"]["player"] = data.split(":",1)[1]
-        await q.message.edit_text("Select Club", reply_markup=list_buttons(clubs(), "mixc"))
-        return
+    p = mix["player"]
+    c = data.split(":",1)[1]
 
-    if data.startswith("mixc:"):
-        p = context.user_data["mix"]["player"]
-        c = data.split(":",1)[1]
-        await send_images(context.bot, q.message.chat_id, by_player_club(p, c))
-        context.user_data.clear()
-        return
+    await send_images(
+        context.bot,
+        q.message.chat_id,
+        by_player_club(p, c)
+    )
 
+    context.user_data.clear()
+    return
     # -------- CATEGORY --------
     if data == "menu:categories":
         await q.message.edit_text("Select Sleeve Type", reply_markup=list_buttons(categories(), "cat"))
