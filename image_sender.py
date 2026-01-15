@@ -1,34 +1,30 @@
 import random
 import asyncio
+import requests
 
-IMAGE_DELAY = 0.6
+IMAGE_DELAY = 0.8
 MAX_IMAGES = 9
 
-
-def build_caption(item):
-    title = item.get("title") or item.get("name", "").replace("_", " ").replace("__", " ")
-    link = item.get("link") or "https://visionsjersey.com"
-
+def build_caption(row):
     return (
-        f"👕 {title}\n\n"
+        f"👕 {row['title']}\n\n"
         "📏 Sizes Available:\n"
         "S • M • L • XL • XXL\n\n"
-        f"🔗 Product Link:\n{link}\n\n"
+        f"🔗 Product Link:\n{row['product_url']}\n\n"
         "✨ Grab yours before stock runs out!"
     )
 
-
-async def send_images(bot, chat_id, images):
-    if not images:
-        await bot.send_message(chat_id, "❌ No jerseys found")
+async def send_whatsapp_random(bot, chat_id, csv_rows):
+    if not csv_rows:
+        await bot.send_message(chat_id, "❌ No products found")
         return
 
-    selected = random.sample(images, min(MAX_IMAGES, len(images)))
+    selected = random.sample(csv_rows, min(MAX_IMAGES, len(csv_rows)))
 
-    for img in selected:
+    for row in selected:
         await bot.send_photo(
             chat_id=chat_id,
-            photo=img["file_id"],
-            caption=build_caption(img)
+            photo=row["image"],   # 🔥 DIRECT IMAGE URL
+            caption=build_caption(row)
         )
         await asyncio.sleep(IMAGE_DELAY)
