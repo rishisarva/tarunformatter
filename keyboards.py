@@ -2,30 +2,24 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def main_menu():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("🖼 Clubs", callback_data="menu:clubs"),
-         InlineKeyboardButton("🖼 Players", callback_data="menu:players")],
-        [InlineKeyboardButton("🧠 Smart Filter", callback_data="menu:smart")],
-        [InlineKeyboardButton("🎲 Random Jerseys", callback_data="menu:random")],
-        [InlineKeyboardButton("🖼 Categories", callback_data="menu:categories")],
-        [InlineKeyboardButton("🎯 Random Technique", callback_data="menu:technique")]
+        [InlineKeyboardButton("🖼 Clubs", callback_data="clubs")],
+        [InlineKeyboardButton("🖼 Players", callback_data="players")],
+        [InlineKeyboardButton("🧠 Smart Club / Player", callback_data="smart")],
+        [InlineKeyboardButton("🖼 Categories", callback_data="categories")],
+        [InlineKeyboardButton("🎯 Random Technique", callback_data="randtech")],
+        [InlineKeyboardButton("🎲 Random 15 Jerseys", callback_data="random")],
+        [InlineKeyboardButton("📤 WhatsApp 9 Jerseys", callback_data="wa9")]
     ])
 
-def back_btn():
+def list_menu(items, prefix):
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("⬅ Back", callback_data="menu:back")]
+        [InlineKeyboardButton(i.title(), callback_data=f"{prefix}:{i}")]
+        for i in items
     ])
 
-def list_buttons(items, prefix):
-    rows = []
-    for i in range(0, len(items), 2):
-        row = [
-            InlineKeyboardButton(items[i].title(), callback_data=f"{prefix}:{items[i]}")
-        ]
-        if i + 1 < len(items):
-            row.append(
-                InlineKeyboardButton(items[i+1].title(), callback_data=f"{prefix}:{items[i+1]}")
-            )
-        rows.append(row)
+def category_menu():
+    cats = ["short sleeve", "full sleeve", "polo", "five sleeve"]
+    return list_menu(cats, "cat")
 
-    rows.append([InlineKeyboardButton("⬅ Back", callback_data="menu:back")])
-    return InlineKeyboardMarkup(rows)
+def tech_menu():
+    return list_menu(["sublimation","embroidery","signature"], "tech")
