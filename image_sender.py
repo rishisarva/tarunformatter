@@ -1,8 +1,9 @@
 import random
 from telegram import InputMediaPhoto
-from config import MAX_IMAGES
 
-async def send_album(bot, chat_id, images, caption=None):
+MAX_IMAGES = 9  # WhatsApp-friendly
+
+async def send_images(bot, chat_id, images, caption=None):
     if not images:
         await bot.send_message(chat_id, "❌ No jerseys found")
         return
@@ -14,8 +15,8 @@ async def send_album(bot, chat_id, images, caption=None):
         media.append(
             InputMediaPhoto(
                 media=img["file_id"],
-                caption=caption if i == 0 else ""
+                caption=caption if i == 0 else None
             )
         )
 
-    await bot.send_media_group(chat_id, media)
+    await bot.send_media_group(chat_id=chat_id, media=media)
