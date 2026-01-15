@@ -19,7 +19,7 @@ def load_csv():
         rows.append({
     "title": r.get("title", "").strip(),
     "link": r.get("link", "").strip(),   # ✅ FIX HERE
-    "image": r.get("image", "").lower()
+    "image": r.get("image", "")
 })
     _csv_cache = rows
     return rows
