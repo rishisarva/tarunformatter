@@ -13,6 +13,8 @@ from keyboards import main_menu, list_keyboard
 from filters import *
 from image_sender import send_images
 from state import clear
+from csv_loader import load_csv
+from image_sender import send_whatsapp_random
 
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
@@ -75,12 +77,13 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if text == "📲 whatsapp random 9":
-        imgs = []
-        for v in TELEGRAM_FILE_MAP.values():
-            imgs.extend(v)
-        await send_images(context.bot, update.message.chat_id, imgs)
-        return
-
+    rows = load_csv()
+    await send_whatsapp_random(
+        context.bot,
+        update.message.chat_id,
+        rows
+    )
+    return
     # STATE HANDLING
     mode = context.user_data.get("mode")
 
