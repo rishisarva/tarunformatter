@@ -1,17 +1,20 @@
 import random
-from telegram import InputMediaPhoto
-from config import MAX_IMAGES
+import asyncio
 
-async def send_images(bot, chat_id, images):
+IMAGE_DELAY = 0.6
+MAX_IMAGES = 9
+
+async def send_images(bot, chat_id, images, caption=None):
     if not images:
         await bot.send_message(chat_id, "❌ No jerseys found")
         return
 
     selected = random.sample(images, min(MAX_IMAGES, len(images)))
 
-    media = [
-        InputMediaPhoto(photo=i["file_id"])
-        for i in selected
-    ]
-
-    await bot.send_media_group(chat_id=chat_id, media=media)
+    for idx, img in enumerate(selected):
+        await bot.send_photo(
+            chat_id=chat_id,
+            photo=img["file_id"],
+            caption=caption if idx == 0 else None
+        )
+        await asyncio.sleep(IMAGE_DELAY)
