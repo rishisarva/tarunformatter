@@ -11,10 +11,9 @@ from telegram.ext import (
 from config import BOT_TOKEN
 from keyboards import main_menu, list_keyboard
 from filters import *
-from image_sender import send_images
+from image_sender import send_images, send_whatsapp_random
 from state import clear
 from csv_loader import load_csv
-from image_sender import send_whatsapp_random
 
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
@@ -29,7 +28,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.lower()
-    uid = update.effective_user.id
 
     # BACK
     if text == "⬅ back":
@@ -76,14 +74,16 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_images(context.bot, update.message.chat_id, imgs)
         return
 
+    # ✅ WHATSAPP RANDOM 9 (CSV BASED)
     if text == "📲 whatsapp random 9":
-    rows = load_csv()
-    await send_whatsapp_random(
-        context.bot,
-        update.message.chat_id,
-        rows
-    )
-    return
+        rows = load_csv()
+        await send_whatsapp_random(
+            context.bot,
+            update.message.chat_id,
+            rows
+        )
+        return
+
     # STATE HANDLING
     mode = context.user_data.get("mode")
 
