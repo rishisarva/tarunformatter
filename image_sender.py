@@ -1,21 +1,30 @@
 import random
 from telegram import InputMediaPhoto
 
-MAX_IMAGES = 9  # WhatsApp-friendly
+WHATSAPP_COUNT = 9
 
-async def send_images(bot, chat_id, images, caption=None):
-    if not images:
-        await bot.send_message(chat_id, "❌ No jerseys found")
-        return
+def build_whatsapp_caption(item):
+    title = item.get("title", "Jersey")
+    link = item.get("link", "https://visionsjersey.com")
 
-    selected = random.sample(images, min(MAX_IMAGES, len(images)))
+    return (
+        f"👕 {title}\n\n"
+        "📏 Sizes Available:\n"
+        "S • M • L • XL • XXL\n\n"
+        f"🔗 Product Link:\n{link}\n\n"
+        "✨ Premium quality | Limited stock\n"
+        "👉 Order now before it sells out!"
+    )
+
+async def send_whatsapp_random(bot, chat_id, items):
+    selected = random.sample(items, min(WHATSAPP_COUNT, len(items)))
 
     media = []
-    for i, img in enumerate(selected):
+    for i, item in enumerate(selected):
         media.append(
             InputMediaPhoto(
-                media=img["file_id"],
-                caption=caption if i == 0 else None
+                media=item["file_id"],
+                caption=build_whatsapp_caption(item) if i == 0 else None
             )
         )
 
