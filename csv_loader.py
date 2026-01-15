@@ -3,19 +3,33 @@ import requests
 
 CSV_URL = "https://visionsjersey.com/wp-content/uploads/telegram_stock.csv"
 
+_csv_cache = None
+
 def load_csv():
-    res = requests.get(CSV_URL, timeout=20)
+    global _csv_cache
+    if _csv_cache is not None:
+        return _csv_cache
+
+    res = requests.get(CSV_URL, timeout=15)
     res.raise_for_status()
 
-    reader = csv.DictReader(res.text.splitlines())
     rows = []
-
+    reader = csv.DictReader(res.text.splitlines())
     for r in reader:
-        if r.get("image") and r.get("title") and r.get("product_url"):
-            rows.append({
-                "title": r["title"].strip(),
-                "image": r["image"].strip(),
-                "product_url": r["product_url"].strip()
-            })
-
+        rows.append({
+    "title": r.get("title", "").strip(),
+    "link": r.get("link", "").strip(),   # ✅ FIX HERE
+    "image": r.get("image", "").lower()
+})
+    _csv_cache = rows
     return rows
+
+
+def find_from_csv(filename: str):
+    filename = filename.lower()
+
+    for row in load_csv():
+        if row["image"] and row["image"] in filename:
+            return row
+
+    return None
