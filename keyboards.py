@@ -2,12 +2,23 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 def main_menu():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("🖼 Clubs", callback_data="menu:clubs"),
-         InlineKeyboardButton("🖼 Players", callback_data="menu:players")],
-        [InlineKeyboardButton("🧠 Smart Filter", callback_data="menu:smart")],
-        [InlineKeyboardButton("🎲 Random Jerseys", callback_data="menu:random")],
-        [InlineKeyboardButton("🖼 Categories", callback_data="menu:categories")],
-        [InlineKeyboardButton("🎯 Random Technique", callback_data="menu:technique")]
+        [
+            InlineKeyboardButton("🖼 Clubs", callback_data="menu:clubs"),
+            InlineKeyboardButton("🖼 Players", callback_data="menu:players")
+        ],
+        [
+            InlineKeyboardButton("🖼 Mix", callback_data="menu:mix")
+        ],
+        [
+            InlineKeyboardButton("🖼 Categories", callback_data="menu:categories"),
+            InlineKeyboardButton("🎯 Random Technique", callback_data="menu:technique")
+        ],
+        [
+            InlineKeyboardButton("📲 WhatsApp Random 9", callback_data="menu:wa9")
+        ],
+        [
+            InlineKeyboardButton("🎲 Random Jerseys", callback_data="menu:random")
+        ]
     ])
 
 def back_btn():
