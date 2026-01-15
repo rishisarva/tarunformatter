@@ -1,9 +1,15 @@
 import os
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+from telegram.ext import (
+    Application,
+    CommandHandler,
+    MessageHandler,
+    ContextTypes,
+    filters
+)
 
 from config import BOT_TOKEN
-from keyboards import main_menu, list_buttons
+from keyboards import main_menu, list_keyboard
 from filters import *
 from image_sender import send_images
 from state import clear
@@ -13,115 +19,107 @@ WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clear(update.effective_user.id)
-    await update.message.reply_text("👕 Vision Jerseys", reply_markup=main_menu())
-
-async def on_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    q = update.callback_query
-    await q.answer()
-    uid = q.from_user.id
-    data = q.data
-
-    if data == "menu:back":
-        clear(uid)
-        await q.message.edit_text("👕 Vision Jerseys", reply_markup=main_menu())
-        return
-
-    # -------- CLUBS --------
-    if data == "menu:clubs":
-        await q.message.edit_text("Select Club", reply_markup=list_buttons(clubs(), "club"))
-        return
-
-    if data.startswith("club:"):
-        await send_images(context.bot, q.message.chat_id, by_club(data.split(":",1)[1]))
-        return
-
-    # -------- PLAYERS --------
-    if data == "menu:players":
-        await q.message.edit_text("Select Player", reply_markup=list_buttons(players(), "player"))
-        return
-
-    if data.startswith("player:"):
-        await send_images(context.bot, q.message.chat_id, by_player(data.split(":",1)[1]))
-        return
-
-    # -------- MIX --------
-if data == "menu:mix":
-    context.user_data["mix"] = {}
-    await q.message.edit_text("Select Player", reply_markup=list_buttons(players(), "mixp"))
-    return
-
-if data.startswith("mixp:"):
-    context.user_data.setdefault("mix", {})
-    context.user_data["mix"]["player"] = data.split(":",1)[1]
-    await q.message.edit_text("Select Club", reply_markup=list_buttons(clubs(), "mixc"))
-    return
-
-if data.startswith("mixc:"):
-    mix = context.user_data.get("mix")
-    if not mix:
-        await q.message.reply_text("⚠️ Please start mix again")
-        return
-
-    p = mix["player"]
-    c = data.split(":",1)[1]
-
-    await send_images(
-        context.bot,
-        q.message.chat_id,
-        by_player_club(p, c)
+    context.user_data.clear()
+    await update.message.reply_text(
+        "👕 Vision Jerseys",
+        reply_markup=main_menu()
     )
 
-    context.user_data.clear()
-    return
-    # -------- CATEGORY --------
-    if data == "menu:categories":
-        await q.message.edit_text("Select Sleeve Type", reply_markup=list_buttons(categories(), "cat"))
+async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.lower()
+    uid = update.effective_user.id
+
+    # BACK
+    if text == "⬅ back":
+        context.user_data.clear()
+        await update.message.reply_text("👕 Vision Jerseys", reply_markup=main_menu())
         return
 
-    if data.startswith("cat:"):
-        await send_images(context.bot, q.message.chat_id, by_category(data.split(":",1)[1]))
+    # MAIN MENU
+    if text == "🖼 clubs":
+        await update.message.reply_text("Select Club", reply_markup=list_keyboard(clubs()))
+        context.user_data["mode"] = "club"
         return
 
-    # -------- TECHNIQUE --------
-    if data == "menu:technique":
-        await q.message.edit_text("Select Technique", reply_markup=list_buttons(techniques(), "tech"))
+    if text == "🖼 players":
+        await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
+        context.user_data["mode"] = "player"
         return
 
-    if data.startswith("tech:"):
-        await send_images(context.bot, q.message.chat_id, by_technique(data.split(":",1)[1]))
+    if text == "🖼 mix":
+        context.user_data["mode"] = "mix_player"
+        await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
         return
 
-    # -------- RANDOM --------
-    if data == "menu:random":
+    if text == "🖼 categories":
+        context.user_data["mode"] = "category"
+        await update.message.reply_text(
+            "Select Sleeve Type",
+            reply_markup=list_keyboard(categories())
+        )
+        return
+
+    if text == "🎯 random technique":
+        context.user_data["mode"] = "technique"
+        await update.message.reply_text(
+            "Select Technique",
+            reply_markup=list_keyboard(techniques())
+        )
+        return
+
+    if text == "🎲 random jerseys":
         imgs = []
         for v in TELEGRAM_FILE_MAP.values():
             imgs.extend(v)
-        await send_images(context.bot, q.message.chat_id, imgs)
+        await send_images(context.bot, update.message.chat_id, imgs)
         return
 
-    # -------- WHATSAPP 9 --------
-    if data == "menu:wa9":
+    if text == "📲 whatsapp random 9":
         imgs = []
         for v in TELEGRAM_FILE_MAP.values():
             imgs.extend(v)
+        await send_images(context.bot, update.message.chat_id, imgs)
+        return
 
+    # STATE HANDLING
+    mode = context.user_data.get("mode")
+
+    if mode == "club":
+        await send_images(context.bot, update.message.chat_id, by_club(text))
+        return
+
+    if mode == "player":
+        await send_images(context.bot, update.message.chat_id, by_player(text))
+        return
+
+    if mode == "category":
+        await send_images(context.bot, update.message.chat_id, by_category(text))
+        return
+
+    if mode == "technique":
+        await send_images(context.bot, update.message.chat_id, by_technique(text))
+        return
+
+    if mode == "mix_player":
+        context.user_data["mix_player"] = text
+        context.user_data["mode"] = "mix_club"
+        await update.message.reply_text("Select Club", reply_markup=list_keyboard(clubs()))
+        return
+
+    if mode == "mix_club":
+        player = context.user_data.get("mix_player")
         await send_images(
             context.bot,
-            q.message.chat_id,
-            imgs,
-            caption=(
-                "👕 Premium Football Jerseys\n\n"
-                "📏 Sizes: S • M • L • XL • XXL\n\n"
-                "🔗 https://visionsjersey.com\n\n"
-                "✨ Limited stock — order now!"
-            )
+            update.message.chat_id,
+            by_player_club(player, text)
         )
+        context.user_data.clear()
         return
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CallbackQueryHandler(on_callback))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
     app.run_webhook(
         listen="0.0.0.0",
