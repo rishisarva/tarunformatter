@@ -1,17 +1,16 @@
 import random
 from telegram import InputMediaPhoto
-from config import MAX_IMAGES
 
-async def send_images(bot, chat_id, images):
-    if not images:
+async def send_images(bot, chat_id, rows, limit=10):
+    if not rows:
         await bot.send_message(chat_id, "❌ No jerseys found")
         return
 
-    selected = random.sample(images, min(MAX_IMAGES, len(images)))
+    selected = random.sample(rows, min(limit, len(rows)))
 
     media = [
-        InputMediaPhoto(photo=i["file_id"])
-        for i in selected
+        InputMediaPhoto(media=r["file_id"])
+        for r in selected
     ]
 
     await bot.send_media_group(chat_id=chat_id, media=media)
