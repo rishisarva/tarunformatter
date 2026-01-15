@@ -5,18 +5,19 @@ from csv_loader import find_from_csv
 IMAGE_DELAY = 0.6
 MAX_IMAGES = 9
 
+
 def humanize_filename(name: str):
     name = name.replace(".jpg", "").replace(".png", "")
     name = name.replace("__", " ")
     name = name.replace("_", " ")
     return name.strip()
 
+
 def build_caption(item):
     filename = item.get("name", "").lower()
-
     csv_row = find_from_csv(filename)
 
-    if csv_row:
+    if csv_row and csv_row["title"] and csv_row["link"]:
         title = csv_row["title"]
         link = csv_row["link"]
     else:
@@ -30,6 +31,7 @@ def build_caption(item):
         f"🔗 Product Link:\n{link}\n\n"
         "✨ Grab yours before stock runs out!"
     )
+
 
 async def send_images(bot, chat_id, images):
     if not images:
