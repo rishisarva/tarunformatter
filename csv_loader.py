@@ -1,50 +1,21 @@
 import csv
 import requests
-import os
-from urllib.parse import urlparse
 
 CSV_URL = "https://visionsjersey.com/wp-content/uploads/telegram_stock.csv"
 
-_csv_cache = None
-
-
-def _basename(url: str) -> str:
-    """Extract filename from image URL"""
-    try:
-        return os.path.basename(urlparse(url).path).lower()
-    except Exception:
-        return ""
-
-
 def load_csv():
-    global _csv_cache
-    if _csv_cache is not None:
-        return _csv_cache
-
-    res = requests.get(CSV_URL, timeout=15)
+    res = requests.get(CSV_URL, timeout=20)
     res.raise_for_status()
 
-    rows = []
     reader = csv.DictReader(res.text.splitlines())
+    rows = []
 
     for r in reader:
-        image_url = r.get("image", "").strip()
+        if r.get("image") and r.get("title") and r.get("product_url"):
+            rows.append({
+                "title": r["title"].strip(),
+                "image": r["image"].strip(),
+                "product_url": r["product_url"].strip()
+            })
 
-        rows.append({
-            "title": r.get("title", "").strip(),
-            "link": r.get("link", "").strip(),   # ✅ CORRECT COLUMN
-            "image_name": _basename(image_url)  # ✅ filename only
-        })
-
-    _csv_cache = rows
     return rows
-
-
-def find_from_csv(filename: str):
-    filename = filename.lower()
-
-    for row in load_csv():
-        if row["image_name"] and row["image_name"] in filename:
-            return row
-
-    return None
