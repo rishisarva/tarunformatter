@@ -11,13 +11,11 @@ from telegram.ext import (
 from config import BOT_TOKEN
 from keyboards import main_menu, list_keyboard
 from filters import *
-from image_sender import send_images, send_whatsapp_random
-from csv_loader import load_csv
+from image_sender import send_images
 from state import clear
 
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
-
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clear(update.effective_user.id)
@@ -27,26 +25,25 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=main_menu()
     )
 
-
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.lower()
+    uid = update.effective_user.id
 
-    # ⬅ BACK
+    # BACK
     if text == "⬅ back":
         context.user_data.clear()
         await update.message.reply_text("👕 Vision Jerseys", reply_markup=main_menu())
         return
 
-    # ========= MAIN MENU =========
-
+    # MAIN MENU
     if text == "🖼 clubs":
-        context.user_data["mode"] = "club"
         await update.message.reply_text("Select Club", reply_markup=list_keyboard(clubs()))
+        context.user_data["mode"] = "club"
         return
 
     if text == "🖼 players":
-        context.user_data["mode"] = "player"
         await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
+        context.user_data["mode"] = "player"
         return
 
     if text == "🖼 mix":
@@ -77,19 +74,14 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_images(context.bot, update.message.chat_id, imgs)
         return
 
-    # ========= ✅ WHATSAPP RANDOM 9 (CSV BASED) =========
-
     if text == "📲 whatsapp random 9":
-        rows = load_csv()
-        await send_whatsapp_random(
-            context.bot,
-            update.message.chat_id,
-            rows
-        )
+        imgs = []
+        for v in TELEGRAM_FILE_MAP.values():
+            imgs.extend(v)
+        await send_images(context.bot, update.message.chat_id, imgs)
         return
 
-    # ========= STATE HANDLING =========
-
+    # STATE HANDLING
     mode = context.user_data.get("mode")
 
     if mode == "club":
@@ -124,10 +116,8 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data.clear()
         return
 
-
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
-
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
@@ -137,7 +127,6 @@ def main():
         url_path="webhook",
         webhook_url=WEBHOOK_URL
     )
-
 
 if __name__ == "__main__":
     main()
