@@ -1,11 +1,12 @@
 import random
 import asyncio
+from telegram import InputMediaPhoto
 
 IMAGE_DELAY = 0.6
 MAX_IMAGES = 9
 
 # ---------------------------
-# Existing logic (UNCHANGED)
+# EXISTING HELPERS (unchanged)
 # ---------------------------
 
 def humanize_filename(name: str):
@@ -26,6 +27,10 @@ def build_caption_from_csv(row):
         "✨ Grab yours before stock runs out!"
     )
 
+# ------------------------------------------------
+# ✅ UPDATED: send_images (NO captions, ALBUM MODE)
+# ------------------------------------------------
+
 async def send_images(bot, chat_id, images):
     if not images:
         await bot.send_message(chat_id, "❌ No jerseys found")
@@ -33,24 +38,22 @@ async def send_images(bot, chat_id, images):
 
     selected = random.sample(images, min(MAX_IMAGES, len(images)))
 
-    for img in selected:
-        await bot.send_photo(
-            chat_id=chat_id,
-            photo=img["file_id"],
-            caption=humanize_filename(img.get("name", ""))
-        )
-        await asyncio.sleep(IMAGE_DELAY)
+    media_group = [
+        InputMediaPhoto(media=img["file_id"])
+        for img in selected
+    ]
 
-# ---------------------------
-# ✅ NEW: WhatsApp Random 9
-# ---------------------------
+    # Send all images together (album)
+    await bot.send_media_group(
+        chat_id=chat_id,
+        media=media_group
+    )
+
+# ------------------------------------------------
+# ✅ WHATSAPP RANDOM 9 (UNCHANGED)
+# ------------------------------------------------
 
 async def send_whatsapp_random(bot, chat_id, rows):
-    """
-    rows = CSV rows from csv_loader.load_csv()
-    Each row MUST contain: title, link, image
-    """
-
     if not rows:
         await bot.send_message(chat_id, "❌ CSV is empty")
         return
@@ -66,7 +69,7 @@ async def send_whatsapp_random(bot, chat_id, rows):
 
         await bot.send_photo(
             chat_id=chat_id,
-            photo=image_url,   # Telegram can send images via URL ✅
+            photo=image_url,   # URL from CSV
             caption=caption
         )
         await asyncio.sleep(IMAGE_DELAY)
