@@ -1,9 +1,12 @@
 import random
 import asyncio
-from csv_loader import find_from_csv
 
 IMAGE_DELAY = 0.6
 MAX_IMAGES = 9
+
+# ---------------------------
+# Existing logic (UNCHANGED)
+# ---------------------------
 
 def humanize_filename(name: str):
     name = name.replace(".jpg", "").replace(".png", "")
@@ -11,17 +14,9 @@ def humanize_filename(name: str):
     name = name.replace("_", " ")
     return name.strip()
 
-def build_caption(item):
-    filename = item.get("name", "").lower()
-
-    csv_row = find_from_csv(filename)
-
-    if csv_row:
-        title = csv_row["title"]
-        link = csv_row["link"]
-    else:
-        title = humanize_filename(filename)
-        link = "https://visionsjersey.com"
+def build_caption_from_csv(row):
+    title = row.get("title") or "Premium Jersey"
+    link = row.get("link") or "https://visionsjersey.com"
 
     return (
         f"👕 {title}\n\n"
@@ -42,6 +37,36 @@ async def send_images(bot, chat_id, images):
         await bot.send_photo(
             chat_id=chat_id,
             photo=img["file_id"],
-            caption=build_caption(img)
+            caption=humanize_filename(img.get("name", ""))
+        )
+        await asyncio.sleep(IMAGE_DELAY)
+
+# ---------------------------
+# ✅ NEW: WhatsApp Random 9
+# ---------------------------
+
+async def send_whatsapp_random(bot, chat_id, rows):
+    """
+    rows = CSV rows from csv_loader.load_csv()
+    Each row MUST contain: title, link, image
+    """
+
+    if not rows:
+        await bot.send_message(chat_id, "❌ CSV is empty")
+        return
+
+    selected = random.sample(rows, min(9, len(rows)))
+
+    for row in selected:
+        image_url = row.get("image")
+        if not image_url:
+            continue
+
+        caption = build_caption_from_csv(row)
+
+        await bot.send_photo(
+            chat_id=chat_id,
+            photo=image_url,   # Telegram can send images via URL ✅
+            caption=caption
         )
         await asyncio.sleep(IMAGE_DELAY)
