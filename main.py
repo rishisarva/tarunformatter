@@ -30,7 +30,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.lower()
-
+async def self_ping(app):
+    while True:
+        try:
+            await app.bot.get_me()
+        except Exception:
+            pass
+        await asyncio.sleep(240)  # every 4 minutes
     # BACK
     if text == "⬅ back":
         context.user_data.clear()
