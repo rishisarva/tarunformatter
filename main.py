@@ -119,25 +119,19 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         context.user_data.clear()
         return
-# ================= HEALTH SERVER (FOR UPTIMEROBOT) =================
 
-class HealthHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b"OK")
-
-def run_health_server():
-    with TCPServer(("", 8080), HealthHandler) as httpd:
-        httpd.serve_forever()
 
 def main():
-    # 🔥 Start health server in background
-    threading.Thread(target=run_health_server, daemon=True).start()
-
     app = Application.builder().token(BOT_TOKEN).build()
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
+
+    # ✅ internal keep-alive (NO extra port)
+    app.job_queue.run_once(
+        lambda ctx: ctx.application.create_task(self_ping(ctx.application)),
+        when=1
+    )
 
     app.run_webhook(
         listen="0.0.0.0",
