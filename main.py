@@ -121,6 +121,17 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         context.user_data.clear()
         return
+# ================= HEALTH SERVER (FOR UPTIMEROBOT) =================
+
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def run_health_server():
+    with TCPServer(("", 8080), HealthHandler) as httpd:
+        httpd.serve_forever()
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
