@@ -1,8 +1,6 @@
 import os
 from telegram import Update
-import threading
-from http.server import BaseHTTPRequestHandler
-from socketserver import TCPServer
+
 from telegram.ext import (
     Application,
     CommandHandler,
