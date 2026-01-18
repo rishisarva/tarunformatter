@@ -1,7 +1,6 @@
 import asyncio
 import os
 from telegram import Update
-
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -20,6 +19,7 @@ from csv_loader import load_csv
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
 
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clear(update.effective_user.id)
     context.user_data.clear()
@@ -28,15 +28,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         reply_markup=main_menu()
     )
 
+
 async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.lower()
-async def self_ping(app):
-    while True:
-        try:
-            await app.bot.get_me()
-        except Exception:
-            pass
-        await asyncio.sleep(240)  # every 4 minutes
+
     # BACK
     if text == "⬅ back":
         context.user_data.clear()
@@ -128,13 +123,23 @@ async def self_ping(app):
         return
 
 
+# ✅ KEEP-ALIVE TASK
+async def self_ping(app):
+    while True:
+        try:
+            await app.bot.get_me()
+        except Exception:
+            pass
+        await asyncio.sleep(240)  # every 4 minutes
+
+
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
-    # ✅ internal keep-alive (NO extra port)
+    # internal keep-alive
     app.job_queue.run_once(
         lambda ctx: ctx.application.create_task(self_ping(ctx.application)),
         when=1
@@ -146,6 +151,7 @@ def main():
         url_path="webhook",
         webhook_url=WEBHOOK_URL
     )
+
 
 if __name__ == "__main__":
     main()
