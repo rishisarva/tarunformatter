@@ -59,7 +59,6 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     context.user_data["mode"] = "player"
     return
-
     if text == "🖼 mix":
         context.user_data["mode"] = "mix_player"
         await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
