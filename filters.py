@@ -115,7 +115,7 @@ PLAYER_MAP = {
   "goretzka": ["goretzka", "leon"],      
   "sancho": ["sancho", "jadon"],      
   "hummels": ["hummels", "mats"],      
-  "upamecano": ["upamecano", "dayot"]    
+  "upamecano": ["upamecano", "dayot"],   
   "maldini": ["Maldini", "mald"],
   "yamal": ["lamine", "yamal"],
 }
