@@ -117,6 +117,7 @@ PLAYER_MAP = {
   "hummels": ["hummels", "mats"],      
   "upamecano": ["upamecano", "dayot"]    
   "maldini": ["Maldini", "mald"],
+  "yamal": ["lamine", "yamal"],
 }
 
 # ---------- BASIC ----------
