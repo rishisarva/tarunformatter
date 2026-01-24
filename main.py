@@ -41,27 +41,32 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("👕 Vision Jerseys", reply_markup=main_menu())
         return
 
-    # MAIN MENU
+    # MAIN MENU — CLUBS
     if text == "🖼 clubs":
-    recent = get(update.effective_user.id, "recent_clubs") or []
-    await update.message.reply_text(
-        "Select Club",
-        reply_markup=recent_first_keyboard(recent, clubs())
-    )
-    context.user_data["mode"] = "club"
-    return
+        recent = get(update.effective_user.id, "recent_clubs") or []
+        await update.message.reply_text(
+            "Select Club",
+            reply_markup=recent_first_keyboard(recent, clubs())
+        )
+        context.user_data["mode"] = "club"
+        return
 
+    # MAIN MENU — PLAYERS
     if text == "🖼 players":
-    recent = get(update.effective_user.id, "recent_players") or []
-    await update.message.reply_text(
-        "Select Player",
-        reply_markup=recent_first_keyboard(recent, players())
-    )
-    context.user_data["mode"] = "player"
-    return
+        recent = get(update.effective_user.id, "recent_players") or []
+        await update.message.reply_text(
+            "Select Player",
+            reply_markup=recent_first_keyboard(recent, players())
+        )
+        context.user_data["mode"] = "player"
+        return
+
     if text == "🖼 mix":
         context.user_data["mode"] = "mix_player"
-        await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
+        await update.message.reply_text(
+            "Select Player",
+            reply_markup=list_keyboard(players())
+        )
         return
 
     if text == "🖼 categories":
@@ -87,7 +92,7 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_images(context.bot, update.message.chat_id, imgs)
         return
 
-    # ✅ WHATSAPP RANDOM 9 (CSV BASED)
+    # WHATSAPP RANDOM 9 (UNCHANGED)
     if text == "📲 whatsapp random 9":
         rows = load_csv()
         await send_whatsapp_random(
@@ -101,14 +106,14 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     mode = context.user_data.get("mode")
 
     if mode == "club":
-    push_recent(update.effective_user.id, "recent_clubs", text)
-    await send_images(context.bot, update.message.chat_id, by_club(text))
-    return
+        push_recent(update.effective_user.id, "recent_clubs", text)
+        await send_images(context.bot, update.message.chat_id, by_club(text))
+        return
 
     if mode == "player":
-    push_recent(update.effective_user.id, "recent_players", text)
-    await send_images(context.bot, update.message.chat_id, by_player(text))
-    return
+        push_recent(update.effective_user.id, "recent_players", text)
+        await send_images(context.bot, update.message.chat_id, by_player(text))
+        return
 
     if mode == "category":
         await send_images(context.bot, update.message.chat_id, by_category(text))
@@ -121,7 +126,10 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if mode == "mix_player":
         context.user_data["mix_player"] = text
         context.user_data["mode"] = "mix_club"
-        await update.message.reply_text("Select Club", reply_markup=list_keyboard(clubs()))
+        await update.message.reply_text(
+            "Select Club",
+            reply_markup=list_keyboard(clubs())
+        )
         return
 
     if mode == "mix_club":
