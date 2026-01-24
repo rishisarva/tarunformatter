@@ -17,6 +17,9 @@ from filters import *
 from image_sender import send_images, send_whatsapp_random
 from state import clear
 from csv_loader import load_csv
+from state import get, push_recent
+from keyboards import recent_first_keyboard
+
 
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
@@ -40,14 +43,22 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # MAIN MENU
     if text == "🖼 clubs":
-        await update.message.reply_text("Select Club", reply_markup=list_keyboard(clubs()))
-        context.user_data["mode"] = "club"
-        return
+    recent = get(update.effective_user.id, "recent_clubs") or []
+    await update.message.reply_text(
+        "Select Club",
+        reply_markup=recent_first_keyboard(recent, clubs())
+    )
+    context.user_data["mode"] = "club"
+    return
 
     if text == "🖼 players":
-        await update.message.reply_text("Select Player", reply_markup=list_keyboard(players()))
-        context.user_data["mode"] = "player"
-        return
+    recent = get(update.effective_user.id, "recent_players") or []
+    await update.message.reply_text(
+        "Select Player",
+        reply_markup=recent_first_keyboard(recent, players())
+    )
+    context.user_data["mode"] = "player"
+    return
 
     if text == "🖼 mix":
         context.user_data["mode"] = "mix_player"
@@ -91,12 +102,14 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     mode = context.user_data.get("mode")
 
     if mode == "club":
-        await send_images(context.bot, update.message.chat_id, by_club(text))
-        return
+    push_recent(update.effective_user.id, "recent_clubs", text)
+    await send_images(context.bot, update.message.chat_id, by_club(text))
+    return
 
     if mode == "player":
-        await send_images(context.bot, update.message.chat_id, by_player(text))
-        return
+    push_recent(update.effective_user.id, "recent_players", text)
+    await send_images(context.bot, update.message.chat_id, by_player(text))
+    return
 
     if mode == "category":
         await send_images(context.bot, update.message.chat_id, by_category(text))
