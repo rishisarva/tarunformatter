@@ -20,7 +20,25 @@ from state import clear
 from csv_loader import load_csv
 from state import get, push_recent
 from keyboards import recent_first_keyboard
+# ================= TELEGRAM KEEP ALIVE (NO CRON, FREE) =================
 
+KEEP_ALIVE_CHAT_ID = int(os.environ.get("KEEP_ALIVE_CHAT_ID", "0"))
+
+async def telegram_keep_alive(app: Application):
+    # wait until bot + webhook fully start
+    await asyncio.sleep(30)
+
+    while True:
+        try:
+            if KEEP_ALIVE_CHAT_ID != 0:
+                await app.bot.send_message(
+                    chat_id=KEEP_ALIVE_CHAT_ID,
+                    text="."
+                )
+        except Exception as e:
+            print("Keep-alive error:", e)
+
+        await asyncio.sleep(300)  # 5 minutes
 
 PORT = int(os.environ.get("PORT", 10000))
 WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
