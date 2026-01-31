@@ -20,6 +20,8 @@ from state import clear
 from csv_loader import load_csv
 from state import get, push_recent
 from keyboards import recent_first_keyboard
+PORT = int(os.environ.get("PORT", 10000))
+WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
 # ================= TELEGRAM KEEP ALIVE (NO CRON, FREE) =================
 
 KEEP_ALIVE_CHAT_ID = int(os.environ.get("KEEP_ALIVE_CHAT_ID", "0"))
@@ -156,17 +158,6 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         context.user_data.clear()
         return
-# ================= HEALTH SERVER (FOR UPTIMEROBOT) =================
-
-class HealthHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        self.wfile.write(b"OK")
-
-def run_health_server():
-    with TCPServer(("", 8080), HealthHandler) as httpd:
-        httpd.serve_forever()
 
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
