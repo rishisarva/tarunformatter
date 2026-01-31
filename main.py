@@ -169,13 +169,12 @@ def run_health_server():
         httpd.serve_forever()
 
 def main():
-    # 🔥 Start health server in background
-    threading.Thread(target=run_health_server, daemon=True).start()
-
     app = Application.builder().token(BOT_TOKEN).build()
 
-    # ✅ START TELEGRAM HEARTBEAT (FREE, NO CRON)
-    app.post_init = lambda app: app.create_task(telegram_keep_alive(app))
+    async def post_init(app: Application):
+        asyncio.create_task(telegram_keep_alive(app))
+
+    app.post_init = post_init
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
