@@ -25,8 +25,7 @@ from keyboards import recent_first_keyboard
 KEEP_ALIVE_CHAT_ID = int(os.environ.get("KEEP_ALIVE_CHAT_ID", "0"))
 
 async def telegram_keep_alive(app: Application):
-    # wait until bot + webhook fully start
-    await asyncio.sleep(30)
+    await asyncio.sleep(60)  # wait until webhook is live
 
     while True:
         try:
@@ -39,9 +38,6 @@ async def telegram_keep_alive(app: Application):
             print("Keep-alive error:", e)
 
         await asyncio.sleep(300)  # 5 minutes
-
-PORT = int(os.environ.get("PORT", 10000))
-WEBHOOK_URL = os.environ.get("RENDER_EXTERNAL_URL") + "/webhook"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     clear(update.effective_user.id)
