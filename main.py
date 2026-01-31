@@ -177,6 +177,10 @@ def main():
     threading.Thread(target=run_health_server, daemon=True).start()
 
     app = Application.builder().token(BOT_TOKEN).build()
+
+    # ✅ START TELEGRAM HEARTBEAT (FREE, NO CRON)
+    app.post_init = lambda app: app.create_task(telegram_keep_alive(app))
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
