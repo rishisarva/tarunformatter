@@ -2,8 +2,7 @@ import os
 from telegram import Update
 import threading
 import asyncio
-from http.server import BaseHTTPRequestHandler
-from socketserver import TCPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from telegram.ext import (
     Application,
     CommandHandler,
