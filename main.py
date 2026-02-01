@@ -158,8 +158,27 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         context.user_data.clear()
         return
+# ================= DUMMY HTTP SERVER (RENDER PORT BIND) =================
+
+class DummyHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+    def do_HEAD(self):
+        self.send_response(200)
+        self.end_headers()
+
+def start_dummy_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", port), DummyHandler)
+    server.serve_forever()
 
 def main():
+    # 🔥 Start dummy HTTP server for Render
+    threading.Thread(target=start_dummy_server, daemon=True).start()
+
     app = Application.builder().token(BOT_TOKEN).build()
 
     async def post_init(app: Application):
@@ -171,8 +190,8 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
     app.run_polling(
-    allowed_updates=Update.ALL_TYPES,
-    drop_pending_updates=True
-)
+        allowed_updates=Update.ALL_TYPES,
+        drop_pending_updates=True
+    )
 if __name__ == "__main__":
     main()
