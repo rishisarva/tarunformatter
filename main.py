@@ -170,11 +170,9 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path="webhook",
-        webhook_url=WEBHOOK_URL
-    )
+    app.run_polling(
+    allowed_updates=Update.ALL_TYPES,
+    drop_pending_updates=True
+)
 if __name__ == "__main__":
     main()
