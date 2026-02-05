@@ -55,25 +55,48 @@ async def send_images(bot, chat_id, images):
 
 async def send_whatsapp_random(bot, chat_id, rows):
     if not rows:
-        await bot.send_message(chat_id, "❌ CSV is empty")
+        await bot.send_message(chat_id, "❌ No stock available")
         return
 
     selected = random.sample(rows, min(9, len(rows)))
 
+    sent = 0
+
     for row in selected:
-        image_url = row.get("image")
-        if not image_url:
-            continue
+        image_url = row["image"]
 
-        caption = build_caption_from_csv(row)
-
-        await bot.send_photo(
-            chat_id=chat_id,
-            photo=image_url,   # URL from CSV
-            caption=caption
+        sleeve = detect_sleeve_type(
+            row.get("title", "") + " " + image_url
         )
-        await asyncio.sleep(IMAGE_DELAY)
 
+        caption = (
+            f"👕 {row.get('title')}\n\n"
+            f"📏 Sizes Available:\n"
+            f"S • M • L • XL • XXL\n"
+        )
+
+        if sleeve:
+            caption += f"\n🧵 Sleeve Type: {sleeve}\n"
+
+        caption += (
+            f"\n🔗 Product Link:\n{row.get('link')}\n\n"
+            f"✨ Grab yours before stock runs out!"
+        )
+
+        try:
+            await bot.send_photo(
+                chat_id=chat_id,
+                photo=image_url,
+                caption=caption
+            )
+            sent += 1
+            await asyncio.sleep(0.6)
+
+        except Exception as e:
+            print("FAILED IMAGE:", image_url, e)
+
+    if sent == 0:
+        await bot.send_message(chat_id, "❌ No valid stock found")
 
 def detect_sleeve_type(text: str):
     t = text.lower()
