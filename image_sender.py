@@ -73,3 +73,18 @@ async def send_whatsapp_random(bot, chat_id, rows):
             caption=caption
         )
         await asyncio.sleep(IMAGE_DELAY)
+
+
+def detect_sleeve_type(text: str):
+    t = text.lower()
+
+    if any(x in t for x in ["full sleeve", "full_sleeve", "fullsleev", "full sleev"]):
+        return "Full Sleeve"
+    if any(x in t for x in ["half sleeve", "short sleeve", "short_sleeve", "half_sleeve", "short sleev"]):
+        return "Short Sleeve"
+    if any(x in t for x in ["polo", "collar"]):
+        return "Polo / Collar"
+    if any(x in t for x in ["five sleeve", "five_sleeve"]):
+        return "Five Sleeve"
+
+    return None
