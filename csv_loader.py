@@ -7,24 +7,29 @@ _csv_cache = None
 
 def load_csv():
     global _csv_cache
-    if _csv_cache is not None:
-        return _csv_cache
 
-    res = requests.get(CSV_URL, timeout=15)
+    # 🔥 DO NOT cache forever (latest stock)
+    _csv_cache = None
+
+    res = requests.get(CSV_URL, timeout=20)
     res.raise_for_status()
 
     rows = []
     reader = csv.DictReader(res.text.splitlines())
+
     for r in reader:
+        image_name = r.get("image", "").strip()
+
+        if not image_name:
+            continue
+
         rows.append({
             "title": r.get("title", "").strip(),
-            "link": r.get("link", "").strip(),   # ✅ correct
-            "image": r.get("image", "").strip() # 🔧 remove .lower()
+            "link": r.get("link", "").strip(),
+            "image": BASE_IMAGE_URL + image_name   # ✅ FULL URL
         })
 
-    _csv_cache = rows
     return rows
-
 
 def find_from_csv(filename: str):
     filename = filename.lower()
