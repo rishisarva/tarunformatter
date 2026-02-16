@@ -1,0 +1,782 @@
+{
+  "chelsea": [
+    {
+      "name": "chelsea__manchester_city_2025_26_special_edition_short_sleev_sublimation_halland.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGwWmTFVXVEqZSvPM83lIFxOxp2zjDAALRDmsbBZyYVFI-QGri6E0eAQADAgADdwADOgQ"
+    },
+    {
+      "name": "chelsea__chelsea_2009_10_third_short_sleev_drogba_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGw2mTFV_BOzMWrfxulFDvF_sd7ivkAALTDmsbBZyYVLlXc5ERO9aWAQADAgADdwADOgQ"
+    },
+    {
+      "name": "chelsea__hazard_chelsea_f_c_2016_17_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG7WmTFhM-qaGZMkA826Xdkedhdoj4AAL_DmsbBZyYVPS20nz9minwAQADAgADdwADOgQ"
+    },
+    {
+      "name": "chelsea__enzo_chelsea_f_c_2025_26_stadium_third_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG_2mTFmgS4Yfqx5cbAAG6wXECfeDbJwACEQ9rGwWcmFRe1uuI_n5NuAEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "chelsea__lampard_chelsea_f_c_2008_09_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHDmmTFqhL6whGhf_PUSXLaRDps9fDAAIfD2sbBZyYVFcVpTPq8_nOAQADAgADeQADOgQ"
+    },
+    {
+      "name": "chelsea__drogba_chelsea_2010_11_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHImmTFvt2fIdMbd__BnnRf5A5S5sDAAIzD2sbBZyYVDOdtlMEl9kIAQADAgADdwADOgQ"
+    },
+    {
+      "name": "chelsea__petit_chelsea_2001_03_home_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHKGmTFxYSi4jYrBJEvlgUy0r8KticAAI5D2sbBZyYVG3Bb2dt3lDMAQADAgADdwADOgQ"
+    }
+  ],
+  "brazil": [
+    {
+      "name": "brazil__brazil_1997_98_home_ronaldo_short_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGwmmTFVqGU_MEucOCn3mRt2SGTlWzAALSDmsbBZyYVOhRG2mIY1YRAQADAgADdwADOgQ"
+    },
+    {
+      "name": "brazil__ronaldinho_brazil_2004_home_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG_WmTFl82yY2W5Q6YtTa3pz7EbhtMAAIPD2sbBZyYVORFPPys0AGfAQADAgADdwADOgQ"
+    },
+    {
+      "name": "brazil__neymar_brazil_national_2021_copa_america_final_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHZGmTGBoCV4Monnx3iAJ-yGAOPYnfAAJ_D2sbBZyYVHvrEEJbRsC4AQADAgADdwADOgQ"
+    }
+  ],
+  "ac_milan": [
+    {
+      "name": "ac_milan__maldini_ac_milan_2006_2007_long_sleeve_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGxGmTFWSRbMMhCoqpB7oDPqBvMSl4AALUDmsbBZyYVDuGEa4sugsPAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_1997_1998_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGzGmTFYnKnlu7lo31WfS2i0Lu06WQAALdDmsbBZyYVK8MNAmM-o1PAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_1997_98_away_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGzWmTFY4vToHqvbJ9u2M5ttrbNMd5AALeDmsbBZyYVFnAOkTZVD3xAQADAgADeQADOgQ"
+    },
+    {
+      "name": "ac_milan__ac_milan_2013_14_home_full_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG2GmTFb3hZhfR7o_Hodsb1QMglUOEAALpDmsbBZyYVD4r5CUlSTqSAQADAgADeQADOgQ"
+    },
+    {
+      "name": "ac_milan__ac_milan_2006_07_home_full_embroidery_kaka.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG3WmTFdFTmrm18onVt47E9KhTIzmkAALvDmsbBZyYVDjT-5QWpaKmAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__ac_milan_2006_07_full_sleeve_embroidery_maldini.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG5mmTFfQ3VZUiIYsaDlK6YtKbrs0rAAL4DmsbBZyYVHQChrmrEM88AQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__ac_milan_maldini_home_half_sleeve_embroidery_collar.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG6GmTFfwmXhkx33T6niDT1arGwtEwAAL6DmsbBZyYVEKgdEIPqvZeAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_2014_15_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG7GmTFg-BwDb9gV_7Awo8m6sNM07iAAL-DmsbBZyYVJLwspod8zIZAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__costacurta_ac_milan_2003_04_home.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG8mmTFitx9VQ1qfbHqjuj7N-zuOloAAIFD2sbBZyYVFeNBoqGhrQ-AQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_2000_01_away_five_sleeve_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG9mmTFj7ZNYS0I7OgT1coCbjjT1tHAAIJD2sbBZyYVGr0vtbAU1jcAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__kaka_ac_milan_1996_away_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHAAFpkxZtZod7CkCBQpFVW5CeArrwowACEg9rGwWcmFTjcNuRkF9gmQEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "ac_milan__gattuso_ac_milan_2006_07_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHKmmTFx9kXvrUUgxopxuh12sBOzvIAAI7D2sbBZyYVJbEfHV8qdPNAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_2025_26_polo_special_edition_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHMWmTF0A0qii6m7TbEYe2pKiE4rJaAAJCD2sbBZyYVFwjiEVirycZAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__ac_milan_2006_07_away_kit_kaka_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHU2mTF9PPXnWH7g5eNVjlNWJyEQkjAAJsD2sbBZyYVFKvy404qk7YAQADAgADeAADOgQ"
+    },
+    {
+      "name": "ac_milan__maldini_ac_milan_2006_2007_away_kit_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHVGmTF9evMzrOE5ucul_gyeUBCi_rAAJtD2sbBZyYVB5viQXZsIgxAQADAgADdwADOgQ"
+    },
+    {
+      "name": "ac_milan__kaka_ac_milan_home_2006_07_half_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHXGmTF_cyZA6tleP5h4HRdNrC8OY5AAJ2D2sbBZyYVOf1c4QzM2lbAQADAgADeQADOgQ"
+    },
+    {
+      "name": "ac_milan__kaka_ac_milan_2006_2007_away_full_sleev_signature_embroidery_sublimation_full_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHYmmTGBHDZxtqueP5spgAASm-iFJvLwACfA9rGwWcmFRHTRNMoMExawEAAwIAA3cAAzoE"
+    }
+  ],
+  "man_united": [
+    {
+      "name": "man_united__beckham_manchester_united_1998_99_black_away_polo_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGxWmTFWnCJPHqTcWjuyj-IhMSPqL9AALWDmsbBZyYVBUsDJIZcgaGAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2007_2008_home_full_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGymmTFYCrZNsPLgmbB4ic7xgr17ZUAALbDmsbBZyYVGhzuhmEBoLpAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__manchester_utd_1999_david_beckham_zip_collar_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG5GmTFe2OU2jJhGPoZaghLtJEtTKqAAL2DmsbBZyYVD9NA8L2CdJeAQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__cunha_manchester_united_2025_26_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG-GmTFkcAAWBWCzlK-6bKZGTN5EoenAACCw9rGwWcmFTOYaADA6QH9gEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2007_2008_away_full_sleeve_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHEGmTFrBUqHIUiUocsWSblQvzdRsiAAIiD2sbBZyYVBEg8sxWlN3lAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2004_06_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHE2mTFrsTux3uhSc0gLCTxPGGBBiqAAIlD2sbBZyYVLQmlmnDBRESAQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__forlan_manchester_united_2003_05_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHFGmTFr-O_KRLdC98fDMsnLVMnBkFAAImD2sbBZyYVEOlMnLoZQO8AQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_2008_09_manchester_united_away_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHHmmTFulOF0xmPD2Uf2-Fna_vCIHzAAIvD2sbBZyYVKEqbG6UIWTUAQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__giggs_man_united_94_95_away_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHH2mTFu5bSCsYbjvdKWJ3v21zTc3NAAIwD2sbBZyYVB5y1gN8dgMPAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2004_06_home_five_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHL2mTFzf_oTBuhTR5rcbRRM517vJrAAJAD2sbBZyYVH_tkYfIjIBGAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2009_10_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHMmmTF0WJX3rtNB4oKbXQ_5PEveJ9AAJDD2sbBZyYVEaW4MJBYjqVAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__beckham_vintage_manchester_united_2000_2001_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHQGmTF4P0ox1XFhzLZKNfFSr3ZGs7AAJZD2sbBZyYVPXNWkd__6eBAQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__beckham_manchester_united_1995_96_away_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHSGmTF6LTdXqaY_BbgUKYVzha13y8AAJhD2sbBZyYVOOW_0lA78YDAQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__beckham_manchester_united_1998_00_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHXmmTGAABU-d2bIvNC_P-L2Y51t3u1wACeA9rGwWcmFRt2erPEI9ipQEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "man_united__beckham_manchester_united_2001_02_home_kit_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHX2mTGAQ8BDBrcuIJt4ZKDFN-g2JAAAJ5D2sbBZyYVKzUqsIBgVC7AQADAgADdwADOgQ"
+    },
+    {
+      "name": "man_united__beckham_man_united_95_96_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHYWmTGA2Bosa8HysYNDPveT-gCC9uAAJ7D2sbBZyYVOvOmVyJeu7dAQADAgADeQADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_manchester_united_2007_08_short_sleeve_embroidery_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHaGmTGCtQ4Hm54IP472LcLMXwlWXLAAKDD2sbBZyYVDM_c0EDX713AQADAgADeAADOgQ"
+    },
+    {
+      "name": "man_united__ronaldo_2007_2008_manchester_united_away_long_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHcGmTGExq4vDflyWx8aYYQVnr7kMcAAKLD2sbBZyYVPAjLcUUXMClAQADAgADdwADOgQ"
+    }
+  ],
+  "real_madrid": [
+    {
+      "name": "real_madrid__real_madrid_dragon_special_edition_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGxmmTFW1QoGG-FeB1fR3aOT6VYV0LAALXDmsbBZyYVJVeL7mXUXYZAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2011_12_black_and_gold_away_full_sleeve_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGx2mTFXLQR8xG7rV1VjiQCDtc1PcwAALYDmsbBZyYVCPtIt_ucB8gAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_pink_special_edition_dragon_polo_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG1GmTFaxY_L0Xy25U1JYsnKKT7_bEAALlDmsbBZyYVGnsubICoA-lAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_25_26_away_full_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG12mTFblua9MFnFQs3QybqKAa_7gIAALoDmsbBZyYVFsJoVMi9U1DAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_white_dragon_special_edition_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG2mmTFcUX6uNLEk1WfvrlxVCv0kFUAALsDmsbBZyYVOIp_1zn3A7yAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_25_26_away_half_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG22mTFckvOPNWj486I7Ucn4_OlzjwAALtDmsbBZyYVH4YnFRbK48VAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_2017_18_third_half_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG4GmTFd15_S0rJ7XgxHHPWgtsUbkeAALyDmsbBZyYVCCf9wmnzsavAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_2011_12_home_full_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG4WmTFeHZGi_fJtYUHsFGciYno9FRAALzDmsbBZyYVDnAROKQGhyDAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_2016_17_away_full_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG4mmTFeX-JgmtPam5A1GVXlp-PDoFAAL0DmsbBZyYVEO83puMss8XAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_2016_17_home_full_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG5WmTFfBKq5txfk0ozR0WlEb2xdRjAAL3DmsbBZyYVH5ztNDBAhdnAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__modric_real_madrid_2019_2020_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG7mmTFhje4OiCoRTnqpSd_bIxdwHkAAMPaxsFnJhUx3AFFPx_y1cBAAMCAAN3AAM6BA"
+    },
+    {
+      "name": "real_madrid__raul_kelme_real_madrid_1997_98_third_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG72mTFh3bib2ixd9Sbfh_0gy88GizAAIBD2sbBZyYVDVLc85W0-GCAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__casillas_real_madrid_jersey_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHD2mTFqyaWAs6psj2y9LS5ASC2zIuAAIhD2sbBZyYVCbpk1dAf0HKAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__roberto_carlos_real_madrid_2006_07_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHFWmTFsP8x4MxUGn8PwQZZC9jiUQCAAInD2sbBZyYVKE-wigEDJDFAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2010_2011_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHFmmTFsd6BJeCgMj8Lj-dPdTpep4DAAIoD2sbBZyYVOtDDBS-0RkIAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__gareth_bale_real_madrid_2016_17_third_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHHGmTFuF8lR_e9o45dsYXVKCnNCUNAAItD2sbBZyYVLwfvT1I1oNbAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_2024_25_home_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHI2mTFwABORSxWepv3sOZupQkWrOjdAACNA9rGwWcmFTT9dp7S2FxywEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "real_madrid__roberto_carlos_vintage_navy_blue_real_madrid_1998_99_away_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHLGmTFykwL-jttCOV0AXXCUJTyd85AAI9D2sbBZyYVJEAAaNEj2TEbwEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2016_17_home_polo_sublimation_full_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHOWmTF2Q1Sf1n2A5jtMlzaroUY37FAAJKD2sbBZyYVESVpAsKsB9eAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2017_18_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHOmmTF2holLK2yLUxyM8SOlyXD_fOAAJLD2sbBZyYVFlRwIg_sOOoAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__sergio_ramos_real_madrid_2008_09_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHO2mTF22b118KttN0oJgW-z6h6cGPAAJMD2sbBZyYVL9PA0K-_-QJAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2018_19_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHPWmTF3aXByA2YzpehNMFGt-Q2bIfAAJRD2sbBZyYVBo6px6rhezeAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__raul_real_madrid_1994_1996_home_retro_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHQWmTF4cY5uP9zXcy0Pe6DGdy6EkUAAJaD2sbBZyYVI26J88zc421AQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2011_12_home_polo_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHQmmTF4sP9iH0Tu21SW35WbObkgN8AAJbD2sbBZyYVPQtKQSI-6e3AQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__sergio_ramos_real_madrid_2019_2020_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHR2mTF54TKbKysT4XvKF5dPAQr3IvAAJgD2sbBZyYVOH6b59_Bw_eAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__raul_real_madrid_1999_2000_third_kit_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHSmmTF6vONgbDRuXBJFe_AyF-zjH8AAJjD2sbBZyYVDEic8IKgLKzAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__roberto_carlos_real_madrid_1996_97_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHS2mTF6-NQyktrf_IS4pfLRDoAdB9AAJkD2sbBZyYVEPQkKOY4hJ9AQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__real_madrid_home_zidane_jersey_2003_04_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHUWmTF8vJTeK4Do5pmP-tQsf9UkrVAAJqD2sbBZyYVN0v2tOfOLH8AQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_full_sleev_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHVWmTF9t_qWNvdJsHGfULRPmAveTVAAJvD2sbBZyYVJ8B51k5JcIGAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2016_2017_home_polo_embroidery_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHVmmTF99Hira_5hJQEKHzSsg0iqOpAAJwD2sbBZyYVO8PbzmpT9a4AQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_16_17_away_kit_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHWGmTF-cx2YSHJk0Bjy0Jm9qUA4rhAAJyD2sbBZyYVGXUPsbvCMMHAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2016_2017_home_polo_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHWmmTF_D-66uTXYtiAu7vyVdXkBZRAAJ0D2sbBZyYVN6gZ2uH9y67AQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__mbappe_real_madrid_2025_26_home_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHY2mTGBYxQ3hnPqEasGWnYHgJOEglAAJ-D2sbBZyYVL6Hj7L2dVqYAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2016_2017_home_kit_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHZmmTGCOqXAS4saQ3CYTr8m9K_vW5AAKBD2sbBZyYVCkTnIWMd8wgAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2017_third_signature_embroidery_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHaWmTGC8lhnQYAAEtHpLIKtN3DLnfkQAChA9rGwWcmFQMgOmGE1SRwwEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_2017_18_away_black_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHammTGDMG-Ucnt8DJ2_-KEb5RYrN5AAKFD2sbBZyYVBKz7KU4ILhNAQADAgADdwADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_14_15_third_kit_special_edition_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHa2mTGDjMIhWJ305MEYimcMny4teJAAKGD2sbBZyYVPn5fxsK6laDAQADAgADeQADOgQ"
+    },
+    {
+      "name": "real_madrid__ronaldo_real_madrid_11_12_away_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHbmmTGEQKOSmaJUTqBHPkDdzdy0juAAKJD2sbBZyYVAG6ugjVshieAQADAgADeQADOgQ"
+    }
+  ],
+  "fcb_barcelona": [
+    {
+      "name": "fcb_barcelona__yamal_fc_barcelona_2025_26_special_edition_black_and_orange_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGyGmTFXeyWXacQVb1xGAQ37ZC8hcHAALZDmsbBZyYVPTyNYPtWkmlAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__raphinha_fc_barcelona_2025_26_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGy2mTFYWbtBMQ4Zg2LWxvSlli44oIAALcDmsbBZyYVGgV6CoDrY5-AQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__ronaldinho_fc_barcelona_2003_04_home_polo.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG0GmTFZo_gsHZpJIYNgf3cNaq4owNAALhDmsbBZyYVH8oKKfPKW1xAQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__lamine_yamal_barcelona_2025_26_special_edition_pink_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG1WmTFbE5a1uzgefccPlK8pjPhdYNAALmDmsbBZyYVPqLsPqeOAElAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2018_19_third_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHAmmTFnZZ-8xYY9BbmC3hQq7tocU0AAIUD2sbBZyYVBZcjvKOUazLAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2014_15_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHBGmTFoCofQMJj4zUmcmrXN6bak6ZAAIWD2sbBZyYVOJTE7pRvD4aAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2014_15_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHB2mTFo1lFAqcq1SvR9x_hnvggnQ1AAIZD2sbBZyYVJSQVSvbDms6AQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__neymar_fc_barcelona_2015_16_third_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHCmmTFpkLOJYYc8GF_dTHrgNUdPTFAAIcD2sbBZyYVJvJikd8ZgjMAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__neymar_fc_barcelona_home_2013_14_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHDWmTFqSHTPOfiYuep627HhXjmvJ8AAIeD2sbBZyYVKXgXZ7ZC25iAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2018_2019_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHEWmTFrQcFd1zVds8QsqVAnVanmnyAAIjD2sbBZyYVP4TRL0-k-ifAQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2006_07_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHEmmTFriJloAAAT19zRUTYDxvRaGTDQACJA9rGwWcmFTZYgTXfUAu4QEAAwIAA3kAAzoE"
+    },
+    {
+      "name": "fcb_barcelona__fc_barcelona_2003_04_home_ronaldinho_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHF2mTFssRVb2DAzVeNoPjFGRFzjnhAAIpD2sbBZyYVIKEwbfhyylfAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2009_champions_league_final_retro_home_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHGGmTFtD_hvvMGuk3-fcQhKRqcauJAAIqD2sbBZyYVNEOuIBZMs_GAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_home_kit_2016_17_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHGmmTFth8X9ICJEpop6ImVCTBaUKPAAIrD2sbBZyYVJ8fvew4vVFGAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__barcelona_2010_2011_home_messi_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHHWmTFuWYu5vcvddISVoPuma9oc30AAIuD2sbBZyYVC1Xrramzdh_AQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__barcelona_2014_15_third_kit_neymar_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHIWmTFvZgOlXIhYVlaD7D9xGieoY_AAIyD2sbBZyYVNQhOVHa7WaiAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__lamine_yamal_f_c_barcelona_2025_26_third_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHNGmTF06hRDtkz9VUwqvSk5RvXwJnAAJFD2sbBZyYVP-zMpf8LpafAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_nike_fc_barcelona_2019_20_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHP2mTF36074lSylT07gzIFO0fQMSAAAJTD2sbBZyYVFBpWQndj831AQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__fc_barcelona_x_travis_scott_retro_2000_01_home_polo_skeleton_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHRGmTF5NDZuQb_t3_2MxB3vPd1S02AAJdD2sbBZyYVOAjATDyYE8gAQADAgADdwADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2016_17_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHRWmTF5fBbIxpFM2ObufXpAQa3QdXAAJeD2sbBZyYVCN1odNbMI9iAQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_fc_barcelona_2016_17_home_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHRmmTF5vzj4yDhLpFxGJLc6XcM2XnAAJfD2sbBZyYVK-0wIGMxVhXAQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__messi_barcelona_17_18_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHUmmTF8--mPewnCoOGEne5R9ONagOAAJrD2sbBZyYVG7SGkWKhy12AQADAgADeQADOgQ"
+    },
+    {
+      "name": "fcb_barcelona__puyol_barcelona_1999_vintage_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHbGmTGDwpM0NBwCQvElyLpK6PR8GPAAKHD2sbBZyYVL4DcLMhji5NAQADAgADdwADOgQ"
+    }
+  ],
+  "liverpool": [
+    {
+      "name": "liverpool__torres_liverpool_2002_2004_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGyWmTFXwHQIQTgLKC8LdhejW2VdOQAALaDmsbBZyYVIro_VQMJoXOAQADAgADeQADOgQ"
+    },
+    {
+      "name": "liverpool__szoboszlai_liverpool_fc_2025_26_home_long_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGz2mTFZYESd931sEemYHVUaXQz82_AALgDmsbBZyYVCLZxwN7euj1AQADAgADeQADOgQ"
+    },
+    {
+      "name": "liverpool__gerrard_liverpool_2006_07_third_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHCGmTFpEbEHyV6pAFM0qXUlXiEHLCAAIaD2sbBZyYVNrmje1XpeCeAQADAgADdwADOgQ"
+    },
+    {
+      "name": "liverpool__gerrard_liverpool_fc_2014_15_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHC2mTFp1Ws0DFPoDAJfpgRb6NnmEnAAIdD2sbBZyYVMZiJH3XU9QTAQADAgADeQADOgQ"
+    },
+    {
+      "name": "liverpool__torres_liverpool_fc_1993_95_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHJmmTFw1ylATjYU8lt4OtVZ7PRkjHAAI3D2sbBZyYVMPIvChbZnUSAQADAgADeQADOgQ"
+    },
+    {
+      "name": "liverpool__owen_liverpool_fc_2000_2002_home_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHLWmTFy2Pz60m_FQkzRfyymHTqD6gAAI-D2sbBZyYVK5AQ5_qWRAHAQADAgADdwADOgQ"
+    },
+    {
+      "name": "liverpool__torres_liverpool_f_c_2007_08_away_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHcmmTGFYBv_H2O2J8kyYl8gAB9pN6JgACjQ9rGwWcmFQOFvScJocSJQEAAwIAA3cAAzoE"
+    }
+  ],
+  "germany": [
+    {
+      "name": "germany__wirtz_germany_2026_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIGzmmTFZKPAoT0BvXUZWu2TzwmlrHhAALfDmsbBZyYVI8ey5aMAaT9AQADAgADeQADOgQ"
+    },
+    {
+      "name": "germany__germany_2014_away_kit_coller_half_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG3GmTFc0FSTdlZcTZ2OpVEE6CWXm-AALuDmsbBZyYVDD71ybNIJw5AQADAgADeQADOgQ"
+    },
+    {
+      "name": "germany__kroos_germany_2014_fifa_world_cup_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG_GmTFlrPDjL8IVcBl9sJpAiQctrcAAIOD2sbBZyYVJFoNIDlmFYrAQADAgADdwADOgQ"
+    },
+    {
+      "name": "germany__ballack_germany_90s_special_edition_away_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHMGmTFzu4TAt53mAm49-dZlV8WsfyAAJBD2sbBZyYVG2Y_qHpe-ngAQADAgADdwADOgQ"
+    },
+    {
+      "name": "germany__kroos_germany_2024_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHSWmTF6eCSwm-SIlZqHHrqzBn5GAaAAJiD2sbBZyYVNby1aYlr2aKAQADAgADdwADOgQ"
+    }
+  ],
+  "portugal": [
+    {
+      "name": "portugal__ronaldo_portugal_panther_special_edition_full_sleeve_kit_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG0WmTFZ6utRvg8lGcbn-GpuLklOPYAALiDmsbBZyYVJ9LbKEJFVayAQADAgADdwADOgQ"
+    },
+    {
+      "name": "portugal__ronaldo_portugal_national_football_retro_jersey_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHJWmTFwmc1AwuF4-yw2h47DsIENs-AAI2D2sbBZyYVE147-3pbJGdAQADAgADeQADOgQ"
+    },
+    {
+      "name": "portugal__ronaldo_portugal_2026_world_cup_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHLmmTFzKRF28kKAYD3ZtkKEUqTnkTAAI_D2sbBZyYVIHxKvfWk5AWAQADAgADdwADOgQ"
+    },
+    {
+      "name": "portugal__ronaldo_portugal_2021_2022_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHQ2mTF45ycUV35VGVxleC-eI9A_y2AAJcD2sbBZyYVJ_ZJjQ0lK1dAQADAgADeAADOgQ"
+    },
+    {
+      "name": "portugal__ronaldo_portugal_2014_away_kit_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHV2mTF-OawesHdMJhco_O-r6GkFGFAAJxD2sbBZyYVBiyvJQz3ktmAQADAgADdwADOgQ"
+    }
+  ],
+  "cricket": [
+    {
+      "name": "cricket__india_t20_world_cup_2026_cricket_jersey_hardik.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG0mmTFaMzc2fhkHMwMd_VaMzu4-58AALjDmsbBZyYVMivshcLZRDIAQADAgADdwADOgQ"
+    }
+  ],
+  "newcastle_united": [
+    {
+      "name": "newcastle_united__newcastle_united_2007_09_home_owen.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG02mTFaevqNGWu5Sufu3SBgKvzQ24AALkDmsbBZyYVPaB1XArILfCAQADAgADdwADOgQ"
+    }
+  ],
+  "spain": [
+    {
+      "name": "spain__spain_2010_away_david_world_cup.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG1mmTFbbpUAF9CV2Vj5JJrHHa2YoTAALnDmsbBZyYVMvg6KwYpylhAQADAgADdwADOgQ"
+    },
+    {
+      "name": "spain__raul_spain_1998_2000_home_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHJ2mTFxGhOBIOWJQacj71ReCPeKBmAAI4D2sbBZyYVIQT-hZ3LPV-AQADAgADdwADOgQ"
+    }
+  ],
+  "santos": [
+    {
+      "name": "santos__santos_2012_home_full_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG2WmTFcH2YEOFTzkv8VQdHBylXv3gAALrDmsbBZyYVIDcWHv7l6uAAQADAgADdwADOgQ"
+    },
+    {
+      "name": "santos__neymar_santos_2012_away_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHb2mTGEiQGQvO2kNirFYLSB7WUWXYAAKKD2sbBZyYVMgUUvpV-2SpAQADAgADeAADOgQ"
+    },
+    {
+      "name": "santos__neymar_santos_2012_away_kit_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHdGmTGF_ic66b56YimyHUno8_nllsAAKPD2sbBZyYVHwXFpVMYzAEAQADAgADdwADOgQ"
+    }
+  ],
+  "inter_milan": [
+    {
+      "name": "inter_milan__firelli_italy_ronaldo_nazario_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG3mmTFdUzOfFRT_vhDlzFbcMLh9pFAALwDmsbBZyYVBbFSRpgcjVIAQADAgADeQADOgQ"
+    },
+    {
+      "name": "inter_milan__eto_o_inter_milan_2009_2010_away_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG9GmTFjXN5ph6eFQ2uSK2PZltGOvnAAIID2sbBZyYVP8IWYU1aw0DAQADAgADdwADOgQ"
+    }
+  ],
+  "al_nassr": [
+    {
+      "name": "al_nassr__al_nasser_25_26_third_kit_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG32mTFdldQgaorYPdZrkco4sEcr5nAALxDmsbBZyYVIcFqVwLiAHmAQADAgADdwADOgQ"
+    },
+    {
+      "name": "al_nassr__al_nasser_25_26_away_kit_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG42mTFekWqfPaenXIVvK99njPLsP4AAL1DmsbBZyYVMAuQmCF-ylkAQADAgADdwADOgQ"
+    }
+  ],
+  "sporting": [
+    {
+      "name": "sporting__sporting_cp_2001_02_home_jersey_half_sleeve_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG52mTFfiBN09_JkMF5qCU46Aa9KjZAAL5DmsbBZyYVNQMQf3x96RhAQADAgADeQADOgQ"
+    },
+    {
+      "name": "sporting__ronaldo_sporting_cp_2001_02_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHA2mTFnsDPqHKoYSwQjdDUjY0kTCQAAIVD2sbBZyYVC0rk4ROyIfqAQADAgADdwADOgQ"
+    },
+    {
+      "name": "sporting__ronaldo_sporting_2002_03_home_fullsleeve_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHWWmTF-x5ZO7c6xU19aq7_W5x3K_LAAJzD2sbBZyYVPDybsRV4NmyAQADAgADeQADOgQ"
+    },
+    {
+      "name": "sporting__sporting_2001_02_home_kit_ronaldo_signature_embroidery_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHYGmTGAl6wdCHptp81nGYf3gXBAJCAAJ6D2sbBZyYVKfSQG9kQiibAQADAgADdwADOgQ"
+    }
+  ],
+  "arsenal": [
+    {
+      "name": "arsenal__arsenal_1995_96_away_kit_bergkamp_edition.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG6WmTFgAB0ViZ8Gl7NZbY_FQIcgFiSgAC-w5rGwWcmFTyb671PPWeggEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "arsenal__fabregas_arsenal_2008_10_home_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG62mTFgpl_m0ipzTIk8qoSaHJSkBCAAL9DmsbBZyYVMHT4JcXZCyUAQADAgADdwADOgQ"
+    },
+    {
+      "name": "arsenal__arsenal_2025_26_third_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG8GmTFiIhViUwJabU6_UJ-RoEAAHjsAACAw9rGwWcmFRmy9BWWK1C1QEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "arsenal__bergkamp_arsenal_f_c_1998_99_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIET2mIrGxhHRAlKrjhHw6zlT7FhE_0AAL7DGsbuudIVGX9q91eIWb5AQADAgADeQADOgQ"
+    },
+    {
+      "name": "arsenal__henry_arsenal_2005_06_home_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHG2mTFt0qYJImLksgyRTKa1lhEasPAAIsD2sbBZyYVIKtrp0oki3QAQADAgADdwADOgQ"
+    },
+    {
+      "name": "arsenal__arshawin_arsenal_2009_10_third_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHNWmTF1MSunKlEr09WaCWIuWTiVNSAAJGD2sbBZyYVNRSWI3Y53KgAQADAgADdwADOgQ"
+    },
+    {
+      "name": "arsenal__arsenal_retro_2017_18_third_ozil_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHUGmTF8bxf2hQAwPn6wbj7on33aBVAAJpD2sbBZyYVCZiMd99EiAyAQADAgADdwADOgQ"
+    },
+    {
+      "name": "arsenal__arsenal_25_26_home_jersey_rice_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHZ2mTGCenp96CzYUXElv6VNlI4wGbAAKCD2sbBZyYVIPsFhLzmCS2AQADAgADeQADOgQ"
+    }
+  ],
+  "italy": [
+    {
+      "name": "italy__italy_limited_edition_five_sleeve_polo_sublimation_with_zip_collar.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG6mmTFgUx3u-gDGqcXl7yAAEuuPfaQAAC_A5rGwWcmFQnHAiahdgusAEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "italy__maldini_italy_1996_97_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHJGmTFwVPfSPOKkHMC4e8c-zNmMiUAAI1D2sbBZyYVE0Py56niwGiAQADAgADdwADOgQ"
+    },
+    {
+      "name": "italy__italy_2000_01_home_totti_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHTGmTF7OqG8q7KKHEFYZwUD8AAeGwHwACZQ9rGwWcmFQLaTgNT6If7gEAAwIAA3cAAzoE"
+    }
+  ],
+  "france": [
+    {
+      "name": "france__zidane_blue_and_white_france_national_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG8WmTFiYGk_ZWoeVNPQ1CRRmVe0_MAAIED2sbBZyYVJ62scktTSPnAQADAgADdwADOgQ"
+    },
+    {
+      "name": "france__zidane_france_1996_home_polo_signature_embroidery_with_rope_collar.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHCWmTFpVxQHAZpkCpjMOut2h7T3ySAAIbD2sbBZyYVEEm8ex8qzYBAQADAgADdwADOgQ"
+    },
+    {
+      "name": "france__zidane_france_2006_away_kit_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIEW2mIrLluAYfNhIlCcPb3sMAJ0rTeAAIHDWsbuudIVKk0zeyTZa4DAQADAgADdwADOgQ"
+    },
+    {
+      "name": "france__france_1998_home_kit_zidane_polo_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHIGmTFvK6bRaiGBbvh7L_Ap7EMSFUAAIxD2sbBZyYVHfcpeG0YnFcAQADAgADeQADOgQ"
+    },
+    {
+      "name": "france__zidane_france_2006_world_cup_final_away_embroidery_five_sleeve.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHM2mTF0kNUBqoS2LlZdDlfkgkYzwCAAJED2sbBZyYVFQ9L_T64zLBAQADAgADdwADOgQ"
+    },
+    {
+      "name": "france__zidane_france_1998_away_kit_polo_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHTmmTF7wy127XyoTzn6srU2Y7d-AvAAJnD2sbBZyYVGW43uxB1lSVAQADAgADdwADOgQ"
+    }
+  ],
+  "england": [
+    {
+      "name": "england__england_1998_polo_sublimation_world_cup.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG82mTFjDVgK31Yp74UrQrez81-DOaAAIHD2sbBZyYVP15iHCqXdFBAQADAgADdwADOgQ"
+    },
+    {
+      "name": "england__beckham_england_1998_world_cup_umbro_home_polo_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHBWmTFoStO7WYICttPZgbBcTu4DRZAAIXD2sbBZyYVCmg2dGEt4LcAQADAgADdwADOgQ"
+    },
+    {
+      "name": "england__beckham_england_2004_06_away_full_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHN2mTF1uc5HxE39cB_N28grPyn07dAAJID2sbBZyYVDVk_HsGlfVqAQADAgADeQADOgQ"
+    },
+    {
+      "name": "england__scholes_england_2004_06_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHPmmTF3rk0JOa0r0_t0zFXJ5tKvx2AAJSD2sbBZyYVHDGoqGqA256AQADAgADeQADOgQ"
+    },
+    {
+      "name": "england__1996_england_home_jersey_beckham_signature_coller_v_neck_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHTWmTF7gxlNU8KJJ1vNTBNOAuRZh5AAJmD2sbBZyYVG04MJNO-tOnAQADAgADdwADOgQ"
+    }
+  ],
+  "psv_eindhoven": [
+    {
+      "name": "psv_eindhoven__ronaldo_psv_eindhoven_1994_95_adidas_away_five_sleeve_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIEN2mIq-neOt8v43-SroW7Be55vxnQAALjDGsbuudIVLLoRYElOcMLAQADAgADdwADOgQ"
+    },
+    {
+      "name": "psv_eindhoven__van_nistelrooy_psv_eindhoven_1998_99_away_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHK2mTFyT6t-IVtV9KIfHQv_Z6GOeBAAI8D2sbBZyYVGIV8qcLHZNGAQADAgADdwADOgQ"
+    }
+  ],
+  "juventus": [
+    {
+      "name": "juventus__ibrahimovic_juventus_fc_2004_05_away_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG92mTFkNLQ00qI7xpadBf_iNtNcS5AAIKD2sbBZyYVLHG2eEk1_ZqAQADAgADdwADOgQ"
+    },
+    {
+      "name": "juventus__del_piero_juventus_fc_2010_12_away_five_sleeve_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG-mmTFlHKyq-fUacO5lupCCQwZQ4sAAIND2sbBZyYVNIrNM6Xjd3PAQADAgADdwADOgQ"
+    },
+    {
+      "name": "juventus__del_piero_juventus_2000_01_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHNmmTF1eK83PURDFe4Xwjps850bLzAAJHD2sbBZyYVNipJnZglkMVAQADAgADeQADOgQ"
+    },
+    {
+      "name": "juventus__zidane_juventus_1997_98_home_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHOGmTF18tvmE8KQuERQ4gGZLfElXEAAJJD2sbBZyYVKrb8euYGPpHAQADAgADdwADOgQ"
+    },
+    {
+      "name": "juventus__juventus_19_20_home_kit_full_sleeve_ronaldo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHZWmTGB9D5pRZerLjV9apqHmjmhIcAAKAD2sbBZyYVMnb9sLeZ4VHAQADAgADdwADOgQ"
+    }
+  ],
+  "tottenham": [
+    {
+      "name": "tottenham__modric_tottenham_hotspur_2011_2012_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG-WmTFkxZX_rN5rgCP8-LTElh-ixKAAIMD2sbBZyYVOntCvFF8i79AQADAgADdwADOgQ"
+    }
+  ],
+  "ajax": [
+    {
+      "name": "ajax__ajax_amsterdam_1999_00_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIEPWmIrAoXwjZ8NjK7rfpy07qzaa_jAALpDGsbuudIVFMpHBIkpcwiAQADAgADdwADOgQ"
+    }
+  ],
+  "bayern_munich": [
+    {
+      "name": "bayern_munich__kane_fc_bayern_munich_2025_26_third_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIG_mmTFmMGy_Y_2AMBmn0PzhrTBZu_AAIQD2sbBZyYVGIF1LSYKHlPAQADAgADdwADOgQ"
+    },
+    {
+      "name": "bayern_munich__kroos_addidas_bayern_munich_2006_07_away_polo_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHBmmTFokMRv4RYlK56_YREasLfJi9AAIYD2sbBZyYVPTrGo10FA96AQADAgADdwADOgQ"
+    }
+  ],
+  "celtic_fc": [
+    {
+      "name": "celtic_fc__larsson_umbro_celtic_fc_1997_98_home_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHAWmTFnISxBwzqFpgd9KFwYAU1-EDAAITD2sbBZyYVBh1BwMMLyueAQADAgADdwADOgQ"
+    }
+  ],
+  "new_york_city": [
+    {
+      "name": "new_york_city__pirlo_new_york_city_fc_nycfc_2015_away_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHKWmTFxpnlhicvIX8dR5860xN6cQGAAI6D2sbBZyYVA3Nua5TjuzgAQADAgADdwADOgQ"
+    }
+  ],
+  "man_city": [
+    {
+      "name": "man_city__haaland_manchester_city_f_c_1999_2000_home_polo_five_sleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHPGmTF3EWGhWbGVGw2eKLQjqX9ltRAAJND2sbBZyYVJ9Ef2R1QrTFAQADAgADdwADOgQ"
+    }
+  ],
+  "argentina": [
+    {
+      "name": "argentina__messi_argentina_2006_away_full_sleeve_signature_embroidery_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHT2mTF8KQsnjtdA7biqip1ngY0VxJAAJoD2sbBZyYVIf5F1aLsI2HAQADAgADeQADOgQ"
+    },
+    {
+      "name": "argentina__messi_argentina_2006_home_kit_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHXWmTF_vq_iKTUuRG6xILWI2bPD4qAAJ3D2sbBZyYVN_eVhuQPQR3AQADAgADeQADOgQ"
+    },
+    {
+      "name": "argentina__messi_argentina_2006_away_embroidery_sublimation_signature_embroidery.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHbWmTGECA9_oWMZx-QgF7C7fY1Qs6AAKID2sbBZyYVJVfsktQy6FbAQADAgADeQADOgQ"
+    },
+    {
+      "name": "argentina__messi_world_cup_champions_2022_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHcWmTGFGQySnxEmssN01qMHncHQ7mAAKMD2sbBZyYVK_C80Z5JQABvgEAAwIAA3cAAzoE"
+    },
+    {
+      "name": "argentina__messi_argentina_national_team_2020_2022_away_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHc2mTGFtNmkgfJ5A0-DZvAjL0GSyIAAKOD2sbBZyYVEVm15UH4m-4AQADAgADdwADOgQ"
+    }
+  ],
+  "sweden": [
+    {
+      "name": "sweden__sweden_2006_07_away_kit_ibrahimovic_fivesleeve_sublimation.jpg",
+      "file_id": "AgACAgUAAyEGAATRsKNeAAIHW2mTF_RFYl9n3-Yr04iTHqyszPBVAAJ1D2sbBZyYVOLQrL9AFY7bAQADAgADeQADOgQ"
+    }
+  ]
+}
